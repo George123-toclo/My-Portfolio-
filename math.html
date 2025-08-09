@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>George Toclo - Portfolio</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+  <!-- Feather Icons -->
+  <script src="https://unpkg.com/feather-icons"></script>
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    .dark-mode {
+      background-color: #000000;
+      color: #f3f4f6;
+    }
+    .dark-mode .section-container {
+      background-color: #1a1a1a;
+      color: #f3f4f6;
+    }
+    .dark-mode .input-underline {
+      border-bottom-color: #4b5563;
+      color: #f3f4f6;
+    }
+    .dark-mode .input-underline:focus {
+      border-bottom-color: #f3f4f6;
+      box-shadow: 0 1px 0 0 #f3f4f6;
+    }
+    .dark-mode .input-underline::placeholder {
+      color: #9ca3af;
+    }
+    .dark-mode .bg-gray-50 {
+      background-color: #333333;
+    }
+    .dark-mode .hover\:bg-gray-100:hover {
+      background-color: #444444;
+    }
+    .dark-mode .text-gray-600 {
+      color: #d1d5db;
+    }
+    .dark-mode .text-gray-700 {
+      color: #e5e7eb;
+    }
+    .dark-mode .skill-tag {
+      background-color: #333333;
+      color: #f3f4f6;
+    }
+    .dark-mode .section-divider {
+      border-top-color: #333333;
+    }
+    .dark-mode .send-button {
+      background-color: #f3f4f6;
+      color: #000000;
+    }
+    .dark-mode .send-button:hover {
+      opacity: 0.9;
+    }
+    
+    /* Button styles */
+    .action-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.4rem 1rem;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      background-color: white;
+      color: #111827;
+      min-width: 100px;
+    }
+    .dark-mode .action-button {
+      background-color: #333333;
+      color: #f3f4f6;
+    }
+    .action-button:hover {
+      background-color: #f3f4f6;
+    }
+    .dark-mode .action-button:hover {
+      background-color: #444444;
+    }
+    
+    /* Social icon styles */
+    .social-icon {
+      width: 2rem;
+      height: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background-color: white;
+      transition: all 0.3s ease;
+    }
+    .dark-mode .social-icon {
+      background-color: #333333;
+      color: #f3f4f6;
+    }
+    .social-icon:hover {
+      background-color: #f3f4f6;
+    }
+    .dark-mode .social-icon:hover {
+      background-color: #444444;
+    }
+    
+    /* Download animation */
+    @keyframes downloadPulse {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-3px); }
+      100% { transform: translateY(0); }
+    }
+    .download-animate {
+      animation: downloadPulse 1s infinite;
+    }
+    
+    /* Send button style */
+    .send-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem 1.5rem;
+      background-color: #111827;
+      color: white;
+      border-radius: 40px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+    }
+    .send-button:hover {
+      opacity: 0.9;
+    }
+    .send-button i {
+      margin-right: 0.5rem;
+    }
+    
+    /* Button container */
+    .button-container {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    @media (min-width: 640px) {
+      .button-container {
+        justify-content: flex-start;
+      }
+    }
+    
+    /* Input animation */
+    .input-underline {
+      border: none;
+      border-bottom: 1px solid #E5E7EB;
+      outline: none;
+      background-color: transparent;
+      transition: all 0.3s ease;
+      padding: 0.5rem 0;
+      font-size: 1rem;
+    }
+    @media (min-width: 768px) {
+      .input-underline {
+        font-size: 1.125rem;
+        padding: 0.625rem 0;
+      }
+    }
+    .input-underline:focus {
+      border-bottom-color: #111827;
+      box-shadow: 0 1px 0 0 #111827;
+    }
+    .input-underline::placeholder {
+      color: #9CA3AF;
+      font-size: 0.875rem;
+    }
+    @media (min-width: 768px) {
+      .input-underline::placeholder {
+        font-size: 1rem;
+      }
+    }
+    textarea.input-underline {
+      resize: none;
+    }
+    /* Custom select styling */
+    .custom-select {
+      position: relative;
+    }
+    .custom-select select {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right center;
+      background-size: 1rem;
+    }
+    .custom-select:after {
+      content: '';
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background-color: #111827;
+      transition: width 0.3s ease;
+    }
+    .custom-select:focus-within:after {
+      width: 100%;
+    }
+    /* Section styling */
+    .section-container {
+      background-color: white;
+      border-radius: 40px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      transition: background-color 0.3s ease;
+    }
+    .section-divider {
+      border-top: 1px solid #E5E7EB;
+      margin: 1.5rem 0;
+      transition: border-color 0.3s ease;
+    }
+    /* Contact item styling */
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.5rem 0;
+    }
+    .contact-icon {
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    /* Remove blue highlight on click */
+    * {
+      -webkit-tap-highlight-color: transparent;
+    }
+    /* Skill tags */
+    .skill-tag {
+      border-radius: 20px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    /* Theme toggle */
+    .theme-toggle {
+      position: fixed;
+      bottom: 1rem;
+      right: 1rem;
+      z-index: 50;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #111827;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+    .dark-mode .theme-toggle {
+      background-color: #f3f4f6;
+      color: #111827;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-900 antialiased text-sm">
+  <!-- Theme Toggle Button -->
+  <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+    <i data-feather="moon" class="w-4 h-4 hidden dark-mode-icon"></i>
+    <i data-feather="sun" class="w-4 h-4 light-mode-icon"></i>
+  </button>
+
+  <main class="min-h-screen">
+    <section class="max-w-6xl mx-auto p-4 md:p-8">
+      
+      <!-- HEADER -->
+      <div class="section-container">
+        <header class="flex flex-col md:flex-row items-center gap-6 text-center md:text-left">
+          <!-- Profile image -->
+          <img src="IMG-20250808-WA0006.jpg" 
+               alt="George Toclo profile picture" 
+               class="w-28 h-28 md:w-32 md:h-32 rounded-full object-cover">
+
+          <div class="flex-1">
+            <h1 class="text-xl md:text-2xl font-bold">George Toclo</h1>
+            <p class="text-gray-600 mt-1">Full-Stack Developer | Designer</p>
+            <p class="mt-3 text-gray-700 max-w-2xl text-sm">
+              I'm an aspiring full-stack developer and designer learning to build fast, 
+              accessible websites with clean, simple interfaces. Looking forward to 
+              gaining experience and working on real projects.
+            </p>
+            
+            <div class="mt-4 flex flex-col items-center md:items-start gap-3">
+              <div class="button-container">
+                <a href="mailto:Georgetoclo123@email.com" 
+                   class="action-button">
+                   <i data-feather="mail" class="w-4 h-4 mr-2"></i> Email Me
+                </a>
+                <a href="#" id="download-resume" 
+                   class="action-button">
+                   <i data-feather="download" class="w-4 h-4 mr-2"></i> Download CV
+                </a>
+              </div>
+              <div class="flex gap-2">
+                <a href="https://github.com/George123-toclo" target="_blank" class="social-icon" aria-label="GitHub">
+                  <i data-feather="github" class="w-4 h-4"></i>
+                </a>
+                <a href="https://x.com/geordy_1324?t=KdS_7ZiEKmBikp9NKPsing&s=09" target="_blank" class="social-icon" aria-label="Twitter">
+                  <i data-feather="twitter" class="w-4 h-4"></i>
+                </a>
+                <a href="https://wa.me/231886181331" target="_blank" class="social-icon" aria-label="WhatsApp">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor" width="16" height="16">
+                    <path d="m199.8988 148.3107 -38.5967 -19.2984c-3.0923 -1.541 -6.7727 -1.311 -9.6491 0.6031l-17.7183 11.8202c-8.1336 -4.4713 -14.827 -11.1647 -19.2983 -19.2983l11.8202 -17.7183c1.9141 -2.8764 2.1441 -6.5568 0.6031 -9.6492l-19.2984 -38.5966c-1.6318 -3.2955 -4.9948 -5.3769 -8.6722 -5.3674 -26.6454 0 -48.2458 21.6004 -48.2458 48.2459 0.0665 58.5924 47.5485 106.0743 106.1408 106.1408 26.6463 0.0012 48.2459 -21.5996 48.2459 -48.2458 0.0026 -3.6562 -2.0615 -6.9999 -5.3312 -8.636Zm-42.9147 37.5835c-47.9397 -0.0533 -86.7893 -38.9028 -86.8425 -86.8425 -0.0038 -13.8003 9.7347 -25.6844 23.2666 -28.3927l13.8465 27.7413 -11.784 17.5374c-1.7884 2.6827 -2.1187 6.0813 -0.8805 9.0582 6.9038 16.4082 19.9571 29.4614 36.3653 36.3652 2.9867 1.2937 6.4244 0.9943 9.1426 -0.796l17.6218 -11.7479 27.7413 13.8466c-2.7295 13.5487 -14.6562 23.278 -28.4771 23.2304ZM128.0366 2.56C33.3648 2.5393 -27.2074 103.3919 17.2883 186.9556L3.5986 228.0248c-4.6998 14.0929 7.6187 27.9886 22.1734 25.0123 0.7577 -0.1549 1.5054 -0.3552 2.239 -0.5999l41.0692 -13.6897c85.2541 45.345 187.6254 -18.6046 184.2683 -115.1093C250.9998 56.1183 195.5974 2.5879 128.0366 2.56Zm0 231.58c-18.6593 0.0127 -36.9913 -4.9011 -53.1427 -14.2446 -2.3922 -1.3872 -5.2645 -1.6815 -7.8882 -0.8081L21.8958 234.14l15.0407 -45.1099c0.877 -2.622 0.5871 -5.4942 -0.7961 -7.8882 -40.9093 -70.7283 10.088 -159.2192 91.7952 -159.2835 81.7073 -0.0644 132.8439 88.3461 92.046 159.1388 -18.9461 32.8754 -54.001 53.1364 -91.945 53.1428Z" stroke-width="1"></path>
+                  </svg>
+                </a>
+                <a href="https://www.instagram.com/imgrgtz?igsh=MWhoc3BueXFodXlwaQ==" target="_blank" class="social-icon" aria-label="Instagram">
+                  <i data-feather="instagram" class="w-4 h-4"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </header>
+      </div>
+      
+      <!-- CONTACT + SKILLS -->
+      <div class="section-container">
+        <div class="flex flex-col md:flex-row md:items-start md:gap-8">
+          <!-- Contact -->
+          <div class="flex-1">
+            <h3 class="font-semibold text-base mb-3">Contact</h3>
+            <div class="space-y-1">
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <i data-feather="map-pin" class="w-4 h-4 text-gray-500"></i>
+                </div>
+                <span class="text-gray-600 text-sm">Buchanan, Liberia</span>
+              </div>
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <i data-feather="mail" class="w-4 h-4 text-gray-500"></i>
+                </div>
+                <span class="text-gray-600 text-sm">Georgetoclo123@email.com</span>
+              </div>
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <i data-feather="phone" class="w-4 h-4 text-gray-500"></i>
+                </div>
+                <span class="text-gray-600 text-sm">+231 886 181 331</span>
+              </div>
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <i data-feather="globe" class="w-4 h-4 text-gray-500"></i>
+                </div>
+                <span class="text-gray-600 text-sm">georgetoclo-portfolio.com</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Divider - Mobile -->
+          <div class="md:hidden section-divider"></div>
+          <!-- Divider - Desktop -->
+          <div class="hidden md:block w-px bg-gray-200"></div>
+
+          <!-- Skills -->
+          <div class="flex-1 mt-4 md:mt-0">
+            <h3 class="font-semibold text-base mb-3">Skills</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-xs px-3 py-1 bg-gray-100 skill-tag">HTML</span>
+              <span class="text-xs px-3 py-1 bg-gray-100 skill-tag">CSS</span>
+              <span class="text-xs px-3 py-1 bg-gray-100 skill-tag">JavaScript</span>
+              <span class="text-xs px-3 py-1 bg-gray-100 skill-tag">Editor X</span>
+              <span class="text-xs px-3 py-1 bg-gray-100 skill-tag">Figma</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECTS -->
+      <div class="section-container">
+        <h2 class="text-lg font-semibold">Upcoming Projects</h2>
+        <div class="section-divider"></div>
+        <div class="space-y-3">
+          <article class="p-4 bg-gray-50 rounded-[40px] hover:bg-gray-100 transition">
+            <h3 class="font-semibold text-sm">Project Under Development</h3>
+            <p class="text-gray-600 mt-0.5 text-xs">Exciting new project coming soon. Stay tuned for updates!</p>
+          </article>
+          <article class="p-4 bg-gray-50 rounded-[40px] hover:bg-gray-100 transition">
+            <h3 class="font-semibold text-sm">Innovative Solution</h3>
+            <p class="text-gray-600 mt-0.5 text-xs">Currently in the planning phase. More details to be announced.</p>
+          </article>
+        </div>
+      </div>
+
+      <!-- CONTACT FORM -->
+      <div class="section-container">
+        <h2 class="text-lg font-semibold">Get in touch</h2>
+        <p class="text-gray-600 mt-1 text-sm">
+          I'm open to freelance work and full-time opportunities. Email me directly.
+        </p>
+        <div class="section-divider"></div>
+        <form id="contact-form" class="grid grid-cols-1 gap-4">
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="block text-gray-700 text-xs mb-1">First Name</label>
+              <input name="first-name" class="input-underline w-full" placeholder="Enter your first name" required>
+            </div>
+            <div>
+              <label class="block text-gray-700 text-xs mb-1">Last Name</label>
+              <input name="last-name" class="input-underline w-full" placeholder="Enter your last name" required>
+            </div>
+          </div>
+          <div>
+            <label class="block text-gray-700 text-xs mb-1">Email</label>
+            <input type="email" name="email" class="input-underline w-full" placeholder="Enter your email address" required>
+          </div>
+          <div class="custom-select">
+            <label class="block text-gray-700 text-xs mb-1">Subject</label>
+            <select name="subject" class="input-underline w-full" required>
+              <option value="" disabled selected>Select a subject</option>
+              <option value="greeting">Just saying hello</option>
+              <option value="freelance">Freelance project</option>
+              <option value="job">Job opportunity</option>
+              <option value="collaboration">Collaboration</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-gray-700 text-xs mb-1">Message</label>
+            <textarea name="message" rows="4" class="input-underline w-full" placeholder="Type your message here..." required></textarea>
+          </div>
+          <button type="submit" class="send-button">
+            <i data-feather="send" class="w-4 h-4"></i> Send Message
+          </button>
+        </form>
+      </div>
+
+      <!-- FOOTER -->
+      <footer class="text-gray-500 text-xs text-center py-6">
+        <p>© <span id="current-year">2025</span> George Toclo. All rights reserved.</p>
+      </footer>
+
+    </section>
+  </main>
+
+  <script>
+    feather.replace();
+    
+    // Set current year in footer
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+    
+    // Theme toggle functionality
+    const themeToggle = document.getElementById('theme-toggle');
+    const darkModeIcon = document.querySelector('.dark-mode-icon');
+    const lightModeIcon = document.querySelector('.light-mode-icon');
+    
+    // Check for saved theme preference or use system preference
+    const savedTheme = localStorage.getItem('theme');
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+      document.body.classList.add('dark-mode');
+      darkModeIcon.classList.remove('hidden');
+      lightModeIcon.classList.add('hidden');
+    } else {
+      darkModeIcon.classList.add('hidden');
+      lightModeIcon.classList.remove('hidden');
+    }
+    
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      
+      if (document.body.classList.contains('dark-mode')) {
+        localStorage.setItem('theme', 'dark');
+        darkModeIcon.classList.remove('hidden');
+        lightModeIcon.classList.add('hidden');
+      } else {
+        localStorage.setItem('theme', 'light');
+        darkModeIcon.classList.add('hidden');
+        lightModeIcon.classList.remove('hidden');
+      }
+    });
+    
+    // Download button animation and functionality
+    const downloadBtn = document.getElementById('download-resume');
+    
+    downloadBtn.addEventListener('mouseenter', () => {
+      downloadBtn.classList.add('download-animate');
+    });
+    
+    downloadBtn.addEventListener('mouseleave', () => {
+      downloadBtn.classList.remove('download-animate');
+    });
+    
+    downloadBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      // Add click animation
+      downloadBtn.classList.add('download-animate');
+      setTimeout(() => {
+        downloadBtn.classList.remove('download-animate');
+      }, 1000);
+      
+      // Replace this with your actual resume file path
+      const resumeUrl = 'path/to/your/resume.pdf';
+      
+      // Create a temporary anchor element to trigger download
+      const link = document.createElement('a');
+      link.href = resumeUrl;
+      link.download = 'George_Toclo_Resume.pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    });
+
+    // Contact form submission - now triggers email
+    const contactForm = document.getElementById('contact-form');
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Get form data
+      const formData = new FormData(contactForm);
+      const data = Object.fromEntries(formData);
+      
+      // Construct email subject and body
+      const subject = `New message from ${data['first-name']} ${data['last-name']}: ${data.subject}`;
+      const body = `Name: ${data['first-name']} ${data['last-name']}\nEmail: ${data.email}\n\nMessage:\n${data.message}`;
+      
+      // Open default email client with pre-filled data
+      window.location.href = `mailto:Georgetoclo123@email.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      
+      // Reset the form
+      contactForm.reset();
+      
+      // Show confirmation message
+      alert('Your email client will open with your message. Please send it to contact me.');
+    });
+
+    // Remove focus outline for mouse users but keep for keyboard navigation
+    document.addEventListener('mousedown', function() {
+      document.body.classList.add('using-mouse');
+    });
+    
+    document.addEventListener('keydown', function() {
+      document.body.classList.remove('using-mouse');
+    });
+    
+    const style = document.createElement('style');
+    style.textContent = `
+      .using-mouse :focus {
+        outline: none;
+      }
+      .custom-select select:focus {
+        border-bottom-color: #111827;
+        box-shadow: 0 1px 0 0 #111827;
+      }
+      .dark-mode .custom-select select:focus {
+        border-bottom-color: #f3f4f6;
+        box-shadow: 0 1px 0 0 #f3f4f6;
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+</body>
+</html>
