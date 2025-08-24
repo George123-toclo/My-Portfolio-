@@ -5,21 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>George Toclo - Portfolio</title>
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Tailwind -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-
-  <!-- Feather Icons -->
-  <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 
   <!-- Font Awesome for skill icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 500;
       transition: background-color 0.5s ease, color 0.5s ease;
       scroll-behavior: smooth;
     }
@@ -68,7 +68,7 @@
     .dark-mode .send-button:hover {
       opacity: 0.9;
     }
-    
+
     /* Button styles */
     .action-button {
       display: inline-flex;
@@ -94,7 +94,7 @@
     .dark-mode .action-button:hover {
       background-color: #444444;
     }
-    
+
     /* Social icon styles */
     .social-icon {
       width: 2rem;
@@ -117,7 +117,7 @@
     .dark-mode .social-icon:hover {
       background-color: #444444;
     }
-    
+
     /* Send button style */
     .send-button {
       display: inline-flex;
@@ -140,7 +140,7 @@
     .send-button i {
       margin-right: 0.5rem;
     }
-    
+
     /* Button container */
     .button-container {
       display: flex;
@@ -153,7 +153,7 @@
         justify-content: flex-start;
       }
     }
-    
+
     /* Input animation */
     .input-underline {
       border: none;
@@ -190,50 +190,7 @@
     textarea.input-underline {
       resize: none;
     }
-    
-    /* Custom select styling */
-    .dropdown-subjects {
-      position: relative;
-      width: 100%;
-    }
-    .dropdown-subjects select {
-      width: 100%;
-      padding: 0.5rem 0;
-      border: none;
-      border-bottom: 1px solid #E5E7EB;
-      background-color: transparent;
-      appearance: none;
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    .dropdown-subjects::after {
-      content: '';
-      position: absolute;
-      right: 0;
-      bottom: 0;
-      width: 0;
-      height: 2px;
-      background-color: #111827;
-      transition: width 0.3s ease;
-    }
-    .dark-mode .dropdown-subjects::after {
-      background-color: #f3f4f6;
-    }
-    .dropdown-subjects:focus-within::after {
-      width: 100%;
-    }
-    .dropdown-subjects select:focus {
-      outline: none;
-      border-bottom-color: #111827;
-      box-shadow: 0 1px 0 0 #111827;
-    }
-    .dark-mode .dropdown-subjects select:focus {
-      border-bottom-color: #f3f4f6;
-      box-shadow: 0 1px 0 0 #f3f4f6;
-    }
-    
+
     /* Section styling */
     .section-container {
       background-color: white;
@@ -241,13 +198,14 @@
       padding: 1.5rem;
       margin-bottom: 1.5rem;
       transition: all 0.5s ease;
+      position: relative;
     }
     .section-divider {
       border-top: 1px solid #E5E7EB;
       margin: 1.5rem 0;
       transition: border-color 0.3s ease;
     }
-    
+
     /* Contact item styling */
     .contact-item {
       display: flex;
@@ -266,12 +224,12 @@
       align-items: center;
       justify-content: center;
     }
-    
+
     /* Remove blue highlight on click */
     * {
       -webkit-tap-highlight-color: transparent;
     }
-    
+
     /* Skill tags */
     .skill-tag {
       border-radius: 20px;
@@ -283,36 +241,7 @@
     .skill-tag:hover {
       transform: translateY(-2px);
     }
-    
-    /* Theme toggle with spin animation */
-    .theme-toggle {
-      position: fixed;
-      bottom: 1rem;
-      right: 1rem;
-      z-index: 50;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: #111111;
-      color: white;
-      cursor: pointer;
-      transition: all 0.5s ease;
-    }
-    .dark-mode .theme-toggle {
-      background-color: #ffffff;
-      color: #111111;
-    }
-    .theme-toggle.spin {
-      animation: spin 0.5s ease-out;
-    }
-    @keyframes spin {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-    
+
     /* Fade-in animation for page load */
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
@@ -321,7 +250,7 @@
     .fade-in {
       animation: fadeIn 0.8s ease-out forwards;
     }
-    
+
     /* Call now button */
     .call-now-button {
       display: inline-flex;
@@ -344,29 +273,6 @@
       margin-right: 0.3rem;
     }
 
-    /* Coming soon button - updated to light blue */
-    .coming-soon-button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.25rem 0.75rem;
-      background-color: #93c5fd; /* Light blue */
-      color: #111827;
-      border-radius: 40px;
-      font-size: 0.7rem;
-      font-weight: 500;
-      transition: all 0.3s ease;
-      margin-left: 0.5rem;
-      cursor: default;
-    }
-    .dark-mode .coming-soon-button {
-      background-color: #3b82f6; /* Darker blue for dark mode */
-      color: #f3f4f6;
-    }
-    .coming-soon-button i {
-      margin-right: 0.3rem;
-    }
-    
     /* Title divider */
     .title-divider {
       border-bottom: 1px solid #E5E7EB;
@@ -376,49 +282,403 @@
     .dark-mode .title-divider {
       border-bottom-color: #333333;
     }
-    
-    /* Email provider detection */
-    .email-suggestions {
+
+    /* Menu styles */
+    .menu-button {
       position: absolute;
-      right: 0;
-      top: 100%;
-      background-color: white;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      top: 1.5rem;
+      right: 1.5rem;
       z-index: 10;
-      display: none;
-      width: 100%;
-    }
-    .dark-mode .email-suggestions {
-      background-color: #333333;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-    }
-    .email-suggestion {
-      padding: 0.5rem;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #f0f0f0;
+      color: #111827;
       cursor: pointer;
-      font-size: 0.8rem;
-      transition: background-color 0.2s;
+      transition: all 0.3s ease;
     }
-    .email-suggestion:hover {
+    .dark-mode .menu-button {
+      background-color: #333333;
+      color: #f3f4f6;
+    }
+    .menu-button:hover {
+      background-color: #e0e0e0;
+    }
+    .dark-mode .menu-button:hover {
+      background-color: #444444;
+    }
+    .menu-panel {
+      position: absolute;
+      top: 4rem;
+      right: 1.5rem;
+      width: 200px;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 40px;
+      padding: 1rem;
+      z-index: 20;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
+    .dark-mode .menu-panel {
+      background: rgba(26, 26, 26, 0.8);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+    .menu-open .menu-panel {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .menu-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.5rem 0;
+    }
+    .menu-label {
+      font-size: 0.875rem;
+      color: #4b5563;
+    }
+    .dark-mode .menu-label {
+      color: #d1d5db;
+    }
+
+    /* Toggle switch */
+    .toggle-switch {
+      position: relative;
+      display: inline-block;
+      width: 40px;
+      height: 20px;
+    }
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: .4s;
+      border-radius: 34px;
+    }
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 16px;
+      width: 16px;
+      left: 2px;
+      bottom: 2px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+    }
+    input:checked + .slider {
+      background-color: #22c55e;
+    }
+    input:checked + .slider:before {
+      transform: translateX(20px);
+    }
+
+    /* QR Code */
+    .qr-code {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+    .qr-code img {
+      width: 120px;
+      height: 120px;
+      border-radius: 12px;
+    }
+
+    /* Subject dropdown */
+    .subject-dropdown {
+      position: relative;
+      display: inline-block;
+      margin-left: 0.5rem;
+    }
+    
+    /* From Uiverse.io by WhiteNervosa */
+    .subject-text-button {
+      font-size: 14px;
+      color: #4b5563;
+      font-family: inherit;
+      font-weight: 600;
+      cursor: pointer;
+      position: relative;
+      border: none;
+      background: none;
+      transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+      transition-duration: 400ms;
+      transition-property: color;
+      padding: 0;
+    }
+    .dark-mode .subject-text-button {
+      color: #d1d5db;
+    }
+    .subject-text-button:focus,
+    .subject-text-button:hover {
+      color: #3b82f6;
+    }
+    .dark-mode .subject-text-button:focus,
+    .dark-mode .subject-text-button:hover {
+      color: #93c5fd;
+    }
+    .subject-text-button:focus:after,
+    .subject-text-button:hover:after {
+      width: 100%;
+      left: 0%;
+    }
+    .subject-text-button:after {
+      content: "";
+      pointer-events: none;
+      bottom: -2px;
+      left: 50%;
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      background-color: #3b82f6;
+      transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+      transition-duration: 400ms;
+      transition-property: width, left;
+    }
+    .dark-mode .subject-text-button:after {
+      background-color: #93c5fd;
+    }
+    
+    .subject-dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: white;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
+      z-index: 1;
+      border-radius: 8px;
+      overflow: hidden;
+      animation: dropdownFade 0.3s ease forwards;
+      transform-origin: top center;
+    }
+    .dark-mode .subject-dropdown-content {
+      background-color: #1a1a1a;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.3);
+    }
+    .subject-dropdown-content.show {
+      display: block;
+    }
+    .subject-option {
+      padding: 0.75rem 1rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-size: 0.875rem;
+    }
+    .subject-option:hover {
       background-color: #f0f0f0;
     }
-    .dark-mode .email-suggestion:hover {
+    .dark-mode .subject-option:hover {
+      background-color: #333333;
+    }
+    .subject-option.selected {
+      background-color: #e0e7ff;
+      color: #3730a3;
+    }
+    .dark-mode .subject-option.selected {
+      background-color: #3730a3;
+      color: #e0e7ff;
+    }
+    
+    @keyframes dropdownFade {
+      from {
+        opacity: 0;
+        transform: translateY(-10px) scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* Loading spinner */
+    .loading-spinner {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      border-top-color: #fff;
+      animation: spin 1s ease-in-out infinite;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    /* Upwork button styling */
+    .upwork-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.4rem 0.8rem;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      background-color: #f0f0f0;
+      color: #111827;
+      min-width: auto;
+    }
+    .dark-mode .upwork-button {
+      background-color: #333333;
+      color: #f3f4f6;
+    }
+    .upwork-button:hover {
+      background-color: #e0e0e0;
+      transform: translateY(-2px);
+    }
+    .dark-mode .upwork-button:hover {
       background-color: #444444;
+    }
+    .upwork-icon {
+      width: 14px;
+      height: 14px;
+      margin-right: 0.3rem;
+    }
+    
+    /* Share button */
+    .share-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem;
+      background-color: #f0f0f0;
+      color: #111827;
+      border-radius: 40px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      margin-top: 1rem;
+      width: 100%;
+    }
+    .dark-mode .share-button {
+      background-color: #333333;
+      color: #f3f4f6;
+    }
+    .share-button:hover {
+      background-color: #e0e0e0;
+    }
+    .dark-mode .share-button:hover {
+      background-color: #444444;
+    }
+    
+    /* Menu divider */
+    .menu-divider {
+      border-top: 1px solid #E5E7EB;
+      margin: 0.75rem 0;
+      width: 100%;
+    }
+    .dark-mode .menu-divider {
+      border-top-color: #333333;
+    }
+    
+    /* Website button */
+    .website-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.25rem 0.75rem;
+      background-color: #93c5fd;
+      color: #111827;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      margin-left: 0.5rem;
+      cursor: pointer;
+    }
+    .dark-mode .website-button {
+      background-color: #3b82f6;
+      color: #f3f4f6;
+    }
+    .website-button:hover {
+      opacity: 0.9;
+    }
+    
+    /* Action buttons row */
+    .action-buttons-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+      justify-content: center;
+    }
+    @media (min-width: 640px) {
+      .action-buttons-row {
+        justify-content: flex-start;
+      }
     }
   </style>
 </head>
 <body class="bg-gray-50 text-gray-900 antialiased text-sm">
-  <!-- Theme Toggle Button -->
-  <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
-    <i data-feather="moon" class="w-4 h-4 hidden dark-mode-icon"></i>
-    <i data-feather="sun" class="w-4 h-4 light-mode-icon"></i>
-  </button>
-
   <main class="min-h-screen">
     <section class="max-w-6xl mx-auto p-4 md:p-8">
-      
+
       <!-- HEADER -->
       <div class="section-container fade-in" style="animation-delay: 0.1s">
+        <!-- Menu Button -->
+        <button class="menu-button" id="menu-button" aria-label="Open menu">
+          <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="20" height="20" version="1.1" viewBox="0 0 1707 1707">
+            <path fill="currentColor" d="M575 727c-75,0 -136,-61 -136,-135 0,-75 61,-135 136,-135 74,0 135,60 135,135 0,74 -61,135 -135,135z"></path>
+            <path fill="currentColor" d="M802 448c-91,0 -165,-74 -165,-165 0,-91 74,-164 165,-164 91,0 165,73 165,164 0,91 -74,165 -165,165z"></path>
+            <path fill="currentColor" d="M1148 303c-74,0 -135,-60 -135,-135 0,-74 61,-135 135,-135 75,0 135,61 135,135 0,75 -60,135 -135,135z"></path>
+            <path fill="currentColor" d="M1148 745c-105,0 -190,-85 -190,-190 0,-104 85,-189 190,-189 105,0 190,85 190,189 0,105 -85,190 -190,190z"></path>
+            <path fill="currentColor" d="M843 985c-74,0 -135,-61 -135,-135 0,-75 61,-135 135,-135 75,0 135,60 135,135 0,74 -60,135 -135,135z"></path>
+            <path fill="currentColor" d="M470 1117c-92,0 -167,-75 -167,-167 0,-92 75,-167 167,-167 92,0 167,75 167,167 0,92 -75,167 -167,167z"></path>
+            <path fill="currentColor" d="M1205 1151c-92,0 -167,-75 -167,-167 0,-92 75,-167 167,-167 92,0 167,75 167,167 0,92 -75,167 -167,167z"></path>
+            <path fill="currentColor" d="M333 466c-92,0 -167,-75 -167,-167 0,-92 75,-167 167,-167 92,0 167,75 167,167 0,92 -75,167 -167,167z"></path>
+            <path fill="currentColor" d="M142 821c-74,0 -135,-60 -135,-135 0,-74 61,-135 135,-135 75,0 135,61 135,135 0,75 -60,135 -135,135z"></path>
+            <path fill="currentColor" d="M1478 464c-74,0 -135,-61 -135,-135 0,-75 61,-135 135,-135 74,0 135,60 135,135 0,74 -61,135 -135,135z"></path>
+            <path fill="currentColor" d="M1508 887c-75,0 -136,-60 -136,-135 0,-74 61,-135 136,-135 74,0 135,61 135,135 0,75 -61,135 -135,135z"></path>
+            <path fill="currentColor" d="M893 1367c-74,0 -135,-60 -135,-135 0,-74 61,-135 135,-135 75,0 135,61 135,135 0,75 -60,135 -135,135z"></path>
+            <path fill="currentColor" d="M427 1483c-85,0 -154,-68 -154,-153 0,-84 69,-153 154,-153 84,0 153,69 153,153 0,85 -69,153 -153,153z"></path>
+            <path fill="currentColor" d="M135 1174c-74,0 -135,-61 -135,-135 0,-75 61,-135 135,-135 75,0 135,60 135,135 0,74 -60,135 -135,135z"></path>
+            <path fill="currentColor" d="M1262 1496c-75,0 -135,-61 -135,-135 0,-75 60,-135 135,-135 74,0 135,60 135,135 0,74 -61,135 -135,135z"></path>
+            <path fill="currentColor" d="M1571 1205c-74,0 -135,-61 -135,-135 0,-75 61,-136 135,-136 75,0 135,61 135,136 0,74 -60,135 -135,135z"></path>
+            <path fill="currentColor" d="M752 1673c-74,0 -135,-60 -135,-135 0,-74 61,-135 135,-135 75,0 135,61 135,135 0,75 -60,135 -135,135z"></path>
+          </svg>
+        </button>
+
+        <!-- Menu Panel -->
+        <div class="menu-panel" id="menu-panel">
+          <div class="menu-item">
+            <span class="menu-label">Dark Mode</span>
+            <label class="toggle-switch">
+              <input type="checkbox" id="theme-toggle">
+              <span class="slider"></span>
+            </label>
+          </div>
+          <div class="menu-divider"></div>
+          <div class="qr-code">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://geordy.netlify.app/" alt="QR Code">
+          </div>
+          <button class="share-button" id="share-button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16" class="mr-2">
+              <path d="M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5"/>
+            </svg> Share
+          </button>
+        </div>
+
         <header class="flex flex-col md:flex-row items-center gap-6 text-center md:text-left">
           <!-- Profile image -->
           <img src="IMG-20250808-WA0006.jpg" 
@@ -434,35 +694,50 @@
               accessible websites with clean, simple interfaces. Looking forward to 
               gaining experience and working on real projects.
             </p>
-            
+
             <div class="mt-4 flex flex-col items-center md:items-start gap-3">
-              <div class="button-container">
+              <div class="action-buttons-row">
                 <a href="mailto:Georgetoclo123@gmail.com" 
                    class="action-button">
-                   <i data-feather="mail" class="w-4 h-4 mr-2"></i> Email Me
+                   <svg version="1.1" viewBox="0 0 32 32" width="14" height="14" class="mr-2">
+                    <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M25,27H7c-2.2,0-4-1.8-4-4V9c0-2.2,1.8-4,4-4h18c2.2,0,4,1.8,4,4v14C29,25.2,27.2,27,25,27z"></path>
+                    <polyline fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="3,10 16,18 29,10 "></polyline>
+                  </svg> Email Me
                 </a>
                 <a href="https://github.com/George123-toclo" target="_blank" class="action-button">
-                  <i data-feather="github" class="w-4 h-4 mr-2"></i> GitHub
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16" class="mr-2">
+                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
+                  </svg> GitHub
+                </a>
+                <a href="https://www.upwork.com/freelancers/~01482f5cd761e544bd" target="_blank" class="action-button">
+                  <svg class="upwork-icon" viewBox="0 0 512 153" fill="currentColor">
+                    <path d="M140.106589,96.6278184 C131.785652,96.6278184 123.989458,93.1045388 116.905417,87.3698389 L118.629575,79.2737921 L118.704539,78.9739385 C120.241288,70.3531479 125.113909,55.8852123 140.106589,55.8852123 C151.351098,55.8852123 160.496633,65.0307467 160.496633,76.2752562 C160.459151,87.482284 151.313616,96.6278184 140.106589,96.6278184 L140.106589,96.6278184 Z M140.106589,35.2327965 C120.953441,35.2327965 106.110688,47.6767204 100.076135,68.1417277 C90.8556369,54.310981 83.884041,37.7065886 79.7985359,23.7259151 L59.1836018,23.7259151 L59.1836018,77.3622255 C59.1836018,87.9320644 50.5628111,96.5528551 39.9929722,96.5528551 C29.4231332,96.5528551 20.8023426,87.9320644 20.8023426,77.3622255 L20.8023426,23.7259151 L0.187408492,23.7259151 L0.187408492,77.3622255 C0.112445095,99.3265007 17.9912152,117.355198 39.9554905,117.355198 C61.9197657,117.355198 79.7985359,99.3265007 79.7985359,77.3622255 L79.7985359,68.3666179 C83.8090776,76.7250366 88.7191801,85.1584187 94.6787701,92.6547584 L82.0474378,152.025769 L103.149634,152.025769 L112.295168,108.959297 C120.316252,114.09429 129.53675,117.317716 140.106589,117.317716 C162.708053,117.317716 181.111567,98.801757 181.111567,76.2002928 C181.111567,53.6363104 162.708053,35.2327965 140.106589,35.2327965 L140.106589,35.2327965 Z" fill="#6FDA44"></path>
+                    <path d="M244.043338,37.5566618 L257.349341,91.1929722 L272.004685,37.5566618 L289.471157,37.5566618 L266.944656,115.068814 L249.478184,115.068814 L235.647438,61.0951684 L221.854173,115.031332 L204.387701,115.031332 L181.861201,37.5191801 L199.327672,37.5191801 L213.983016,91.1554905 L227.289019,37.5191801 L244.043338,37.5191801 L244.043338,37.5566618 Z M331.26325,35.2327965 C308.586823,35.2327965 290.220791,53.6363104 290.220791,76.2752562 C290.220791,98.9516837 308.624305,117.317716 331.26325,117.317716 C353.939678,117.317716 372.343192,98.9516837 372.343192,76.2752562 C372.343192,53.5988287 353.939678,35.2327965 331.26325,35.2327965 Z M331.26325,100.450952 C317.919766,100.450952 307.125037,89.6562225 307.125037,76.3127379 C307.125037,62.9692533 317.957247,52.1745242 331.26325,52.1745242 C344.606735,52.1745242 355.401464,62.9692533 355.401464,76.3127379 C355.401464,89.6187408 344.606735,100.450952 331.26325,100.450952 Z M422.231332,54.9106881 C410.499561,54.9106881 401.016691,64.4310395 401.016691,76.1253294 L401.016691,115.031332 L383.437775,115.031332 L383.437775,37.5566618 L401.016691,37.5566618 L401.016691,49.4758419 C401.016691,49.4758419 408.513031,37.5191801 423.918009,37.5191801 L429.315373,37.5191801 L429.315373,54.9106881 L422.231332,54.9106881 Z M481.227526,73.2767204 C493.708931,66.2301611 502.179795,52.8491947 502.179795,37.5191801 L484.600878,37.5191801 C484.600878,50.450366 474.106003,60.9452416 461.174817,60.9452416 L458.81347,60.9452416 L458.81347,0.149926794 L441.234553,0.149926794 L441.234553,115.031332 L458.81347,115.031332 L458.81347,78.5241581 L460.912445,78.5241581 C462.636603,78.5241581 464.885505,79.6486091 465.897511,81.0354319 L490.860322,115.031332 L511.925037,115.031332 L481.227526,73.2767204 Z" fill="currentColor"></path>
+                  </svg> Upwork
                 </a>
               </div>
               <div class="flex gap-2">
                 <a href="https://x.com/geordy_1324?t=KdS_7ZiEKmBikp9NKPsing&s=09" target="_blank" class="social-icon" aria-label="Twitter">
-                  <i data-feather="twitter" class="w-4 h-4"></i>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/>
+                  </svg>
                 </a>
                 <a href="https://wa.me/231886181331" target="_blank" class="social-icon" aria-label="WhatsApp">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor" width="16" height="16">
-                    <path d="m199.8988 148.3107 -38.5967 -19.2984c-3.0923 -1.541 -6.7727 -1.311 -9.6491 0.6031l-17.7183 11.8202c-8.1336 -4.4713 -14.827 -11.1647 -19.2983 -19.2983l11.8202 -17.7183c1.9141 -2.8764 2.1441 -6.5568 0.6031 -9.6492l-19.2984 -38.5966c-1.6318 -3.2955 -4.9948 -5.3769 -8.6722 -5.3674 -26.6454 0 -48.2458 21.6004 -48.2458 48.2459 0.0665 58.5924 47.5485 106.0743 106.1408 106.1408 26.6463 0.0012 48.2459 -21.5996 48.2459 -48.2458 0.0026 -3.6562 -2.0615 -6.9999 -5.3312 -8.636Zm-42.9147 37.5835c-47.9397 -0.0533 -86.7893 -38.9028 -86.8425 -86.8425 -0.0038 -13.8003 9.7347 -25.6844 23.2666 -28.3927l13.8465 27.7413 -11.784 17.5374c-1.7884 2.6827 -2.1187 6.0813 -0.8805 9.0582 6.9038 16.4082 19.9571 29.4614 36.3653 36.3652 2.9867 1.2937 6.4244 0.9943 9.1426 -0.796l17.6218 -11.7479 27.7413 13.8466c-2.7295 13.5487 -14.6562 23.278 -28.4771 23.2304ZM128.0366 2.56C33.3648 2.5393 -27.2074 103.3919 17.2883 186.9556L3.5986 228.0248c-4.6998 14.0929 7.6187 27.9886 22.1734 25.0123 0.7577 -0.1549 1.5054 -0.3552 2.239 -0.5999l41.0692 -13.6897c85.2541 45.345 187.6254 -18.6046 184.2683 -115.1093C250.9998 56.1183 195.5974 2.5879 128.0366 2.56Zm0 231.58c-18.6593 0.0127 -36.9913 -4.9011 -53.1427 -14.2446 -2.3922 -1.3872 -5.2645 -1.6815 -7.8882 -0.8081L21.8958 234.14l15.0407 -45.1099c0.877 -2.622 0.5871 -5.4942 -0.7961 -7.8882 -40.9093 -70.7283 10.088 -159.2192 91.7952 -159.2835 81.7073 -0.0644 132.8439 88.3461 92.046 159.1388 -18.9461 32.8754 -54.001 53.1364 -91.945 53.1428Z" stroke-width="1"></path>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.240-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.050-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.50-.099-.445-1.076-.612-1.47-.160-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.709 1.916.809 2.049c.099.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
                   </svg>
                 </a>
                 <a href="https://www.instagram.com/imgrgtz?igsh=MWhoc3BueXFodXlwaQ==" target="_blank" class="social-icon" aria-label="Instagram">
-                  <i data-feather="instagram" class="w-4 h-4"></i>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.280-.546.453-.92.598-.280.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/>
+                  </svg>
                 </a>
               </div>
             </div>
           </div>
         </header>
       </div>
-      
+
       <!-- CONTACT + SKILLS -->
       <div class="section-container fade-in" style="animation-delay: 0.2s">
         <div class="flex flex-col md:flex-row md:items-start md:gap-8">
@@ -472,30 +747,52 @@
             <div class="space-y-1">
               <div class="contact-item">
                 <div class="contact-icon">
-                  <i data-feather="map-pin" class="w-4 h-4 text-gray-500"></i>
+                  <svg width="16" height="16" viewBox="0 0 64 64" fill="none">
+                    <path d="M32 2.5C26.3003 2.50794 20.8363 4.77566 16.806 8.80597C12.7757 12.8363 10.5079 18.3003 10.5 24C10.5 35.44 30 59.9 30.83 60.94C30.9706 61.1152 31.1487 61.2566 31.3512 61.3537C31.5537 61.4509 31.7754 61.5013 32 61.5013C32.2246 61.5013 32.4463 61.4509 32.6488 61.3537C32.8513 61.2566 33.0294 61.1152 33.17 60.94C34 59.9 53.5 35.44 53.5 24C53.4921 18.3003 51.2243 12.8363 47.194 8.80597C43.1637 4.77566 37.6997 2.50794 32 2.5V2.5Z" fill="#F0454E"></path>
+                    <path d="M32 36.79C39.0637 36.79 44.79 31.0637 44.79 24C44.79 16.9362 39.0637 11.21 32 11.21C24.9362 11.21 19.21 16.9362 19.21 24C19.21 31.0637 24.9362 36.79 32 36.79Z" fill="#E6E6E6"></path>
+                    <path d="M32 2.5C26.3003 2.50794 20.8363 4.77566 16.806 8.80597C12.7757 12.8363 10.5079 18.3003 10.5 24C10.5 35.44 30 59.9 30.83 60.94C30.9706 61.1152 31.1487 61.2566 31.3512 61.3537C31.5537 61.4509 31.7754 61.5013 32 61.5013C32.2246 61.5013 32.4463 61.4509 32.6488 61.3537C32.8513 61.2566 33.0294 61.1152 33.17 60.94C34 59.9 53.5 35.44 53.5 24C53.4921 18.3003 51.2243 12.8363 47.194 8.80597C43.1637 4.77566 37.6997 2.50794 32 2.5V2.5ZM32 57.56C27.76 52.07 13.5 32.9 13.5 24C13.5 19.0935 15.4491 14.3879 18.9185 10.9185C22.3879 7.4491 27.0935 5.5 32 5.5C36.9065 5.5 41.6121 7.4491 45.0815 10.9185C48.5509 14.3879 50.5 19.0935 50.5 24C50.5 32.9 36.24 52.07 32 57.56Z" fill="currentColor"></path>
+                    <path d="M32 11.21C29.4703 11.21 26.9975 11.9601 24.8942 13.3655C22.7909 14.7708 21.1516 16.7684 20.1835 19.1054C19.2155 21.4425 18.9622 24.0141 19.4557 26.4952C19.9492 28.9762 21.1674 31.2551 22.9561 33.0439C24.7448 34.8326 27.0237 36.0507 29.5048 36.5442C31.9858 37.0377 34.5574 36.7844 36.8945 35.8164C39.2316 34.8483 41.2291 33.209 42.6345 31.1057C44.0398 29.0024 44.79 26.5296 44.79 24C44.7847 20.6095 43.4355 17.3594 41.038 14.9619C38.6406 12.5645 35.3905 11.2153 32 11.21ZM32 33.79C30.0637 33.79 28.1709 33.2158 26.5609 32.14C24.951 31.0643 23.6962 29.5353 22.9552 27.7464C22.2142 25.9575 22.0203 23.9891 22.3981 22.09C22.7758 20.191 23.7082 18.4465 25.0774 17.0774C26.4465 15.7082 28.191 14.7758 30.09 14.3981C31.9891 14.0203 33.9575 14.2142 35.7464 14.9552C37.5353 15.6962 39.0643 16.951 40.1401 18.5609C41.2158 20.1709 41.79 22.0637 41.79 24C41.7873 26.5956 40.755 29.0842 38.9196 30.9196C37.0842 32.755 34.5956 33.7873 32 33.79V33.79Z" fill="currentColor"></path>
+                  </svg>
                 </div>
                 <span class="text-gray-600 text-sm">Buchanan, Liberia</span>
               </div>
               <div class="contact-item">
                 <div class="contact-icon">
-                  <i data-feather="mail" class="w-4 h-4 text-gray-500"></i>
+                  <svg version="1.1" viewBox="0 0 32 32" width="16" height="16">
+                    <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M25,27H7c-2.2,0-4-1.8-4-4V9c0-2.2,1.8-4,4-4h18c2.2,0,4,1.8,4,4v14C29,25.2,27.2,27,25,27z"></path>
+                    <polyline fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="3,10 16,18 29,10 "></polyline>
+                  </svg>
                 </div>
                 <span class="text-gray-600 text-sm">Georgetoclo123@gmail.com</span>
               </div>
               <div class="contact-item">
                 <div class="contact-icon">
-                  <i data-feather="phone" class="w-4 h-4 text-gray-500"></i>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+                    <path d="M15.05 5A5 5 0 0 1 19 8.95M15.05 1A9 9 0 0 1 23 8.94m-1 7.98v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                  </svg>
                 </div>
                 <span class="text-gray-600 text-sm">+231 886 181 331</span>
                 <a href="tel:+231886181331" class="call-now-button">
-                  <i data-feather="phone-call" class="w-3 h-3"></i> Call Now
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="12" height="12" class="mr-1">
+                    <path d="M15.05 5A5 5 0 0 1 19 8.95M15.05 1A9 9 0 0 1 23 8.94m-1 7.98v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                  </svg> Call Now
                 </a>
               </div>
               <div class="contact-item">
                 <div class="contact-icon">
-                  <i data-feather="globe" class="w-4 h-4 text-gray-500"></i>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+                    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                  </svg>
                 </div>
-                <span class="text-gray-600 text-sm">georgetoclo-portfolio.com</span>
+                <span class="text-gray-600 text-sm">geordy.netlify.app</span>
+                <a href="https://geordy.netlify.app/" target="_blank" class="website-button">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="12" height="12" class="mr-1">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                  </svg> Visit
+                </a>
               </div>
             </div>
           </div>
@@ -535,12 +832,27 @@
       <!-- CONTACT FORM -->
       <div class="section-container fade-in" style="animation-delay: 0.4s">
         <h2 class="text-lg font-semibold">Get in touch</h2>
-        <p class="text-gray-600 mt-1 text-sm">
-          I'm open to freelance work and full-time opportunities. Email me directly.
-        </p>
+        <div class="flex flex-col sm:flex-row sm:items-center">
+          <p class="text-gray-600 mt-1 text-sm flex-1">
+            I'm open to freelance work and full-time opportunities. Email me directly.
+          </p>
+          <div class="subject-dropdown">
+            <button class="subject-text-button" id="subject-button">
+              Choose subject
+            </button>
+            <div class="subject-dropdown-content" id="subject-dropdown">
+              <div class="subject-option" data-subject="Just saying hello">Just saying hello</div>
+              <div class="subject-option" data-subject="Freelance project">Freelance project</div>
+              <div class="subject-option" data-subject="Job opportunity">Job opportunity</div>
+              <div class="subject-option" data-subject="Collaboration">Collaboration</div>
+              <div class="subject-option" data-subject="Other">Other</div>
+            </div>
+          </div>
+        </div>
+        
         <div class="section-divider"></div>
         <form id="contact-form" class="grid grid-cols-1 gap-4">
-          <div class="grid grid-cols-2 gap-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label class="block text-gray-700 text-xs mb-1">First Name</label>
               <input name="first-name" class="input-underline w-full" placeholder="Enter your first name" required>
@@ -555,24 +867,14 @@
             <input type="email" name="email" class="input-underline w-full" placeholder="Enter your email address" required>
           </div>
           <div>
-            <label class="block text-gray-700 text-xs mb-1">Subject</label>
-            <div class="dropdown-subjects">
-              <select name="subject" class="input-underline w-full" required>
-                <option value="" disabled selected>Select a subject</option>
-                <option value="greeting">Just saying hello</option>
-                <option value="freelance">Freelance project</option>
-                <option value="job">Job opportunity</option>
-                <option value="collaboration">Collaboration</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
-          </div>
-          <div>
             <label class="block text-gray-700 text-xs mb-1">Message</label>
             <textarea name="message" rows="4" class="input-underline w-full" placeholder="Type your message here..." required></textarea>
           </div>
-          <button type="submit" class="send-button">
-            <i data-feather="send" class="w-4 h-4"></i> Send Message
+          <button type="submit" class="send-button w-full sm:w-auto">
+            <svg version="1.1" viewBox="0 0 32 32" width="14" height="14" class="mr-2">
+              <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M26.4,2.9L3.8,15c-0.7,0.4-0.7,1.5,0.1,1.8l20.8,8.7c0.6,0.3,1.3-0.2,1.4-0.8l1.7-20.8 C27.9,3,27.1,2.5,26.4,2.9z"></path>
+              <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M26,4L13,20v7.3c0,0.9,1.2,1.4,1.8,0.7L19,23"></path>
+            </svg> Send Message
           </button>
         </form>
       </div>
@@ -586,82 +888,143 @@
   </main>
 
   <script>
-    feather.replace();
-    
     // Set current year in footer
     document.getElementById('current-year').textContent = new Date().getFullYear();
-    
-    // Theme toggle functionality with spin animation
+
+    // Theme toggle functionality
     const themeToggle = document.getElementById('theme-toggle');
-    const darkModeIcon = document.querySelector('.dark-mode-icon');
-    const lightModeIcon = document.querySelector('.light-mode-icon');
-    
+    const menuButton = document.getElementById('menu-button');
+    const menuPanel = document.getElementById('menu-panel');
+    const subjectButton = document.getElementById('subject-button');
+    const subjectDropdown = document.getElementById('subject-dropdown');
+    const subjectOptions = document.querySelectorAll('.subject-option');
+    const shareButton = document.getElementById('share-button');
+
     function applyTheme(theme) {
       if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
         document.body.classList.add('dark-mode');
-        darkModeIcon.classList.remove('hidden');
-        lightModeIcon.classList.add('hidden');
+        themeToggle.checked = true;
         localStorage.setItem('theme', 'dark');
       } else {
         document.body.classList.remove('dark-mode');
-        darkModeIcon.classList.add('hidden');
-        lightModeIcon.classList.remove('hidden');
+        themeToggle.checked = false;
         localStorage.setItem('theme', 'light');
       }
     }
-    
+
     // Apply saved theme or system preference
     applyTheme(localStorage.getItem('theme'));
+
+    themeToggle.addEventListener('change', () => {
+      applyTheme(themeToggle.checked ? 'dark' : 'light');
+    });
+
+    // Menu functionality
+    function toggleMenu() {
+      document.body.classList.toggle('menu-open');
+    }
     
-    themeToggle.addEventListener('click', () => {
-      // Add spin animation
-      themeToggle.classList.add('spin');
-      
-      setTimeout(() => {
-        themeToggle.classList.remove('spin');
-      }, 500);
-      
-      const isDark = document.body.classList.contains('dark-mode');
-      applyTheme(isDark ? 'light' : 'dark');
+    menuButton.addEventListener('click', toggleMenu);
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (document.body.classList.contains('menu-open') && 
+          !menuButton.contains(e.target) && 
+          !menuPanel.contains(e.target)) {
+        toggleMenu();
+      }
+    });
+
+    // Subject dropdown functionality
+    subjectButton.addEventListener('click', (e) => {
+      e.stopPropagation();
+      subjectDropdown.classList.toggle('show');
     });
     
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+      if (subjectDropdown.classList.contains('show') && 
+          !subjectButton.contains(e.target) && 
+          !subjectDropdown.contains(e.target)) {
+        subjectDropdown.classList.remove('show');
+      }
+    });
+    
+    // Select subject option
+    subjectOptions.forEach(option => {
+      option.addEventListener('click', () => {
+        // Remove selected class from all options
+        subjectOptions.forEach(opt => opt.classList.remove('selected'));
+        
+        // Add selected class to clicked option
+        option.classList.add('selected');
+        
+        // Update button text
+        subjectButton.textContent = option.dataset.subject;
+        
+        // Close dropdown
+        subjectDropdown.classList.remove('show');
+      });
+    });
+
+    // Share functionality
+    shareButton.addEventListener('click', async () => {
+      try {
+        if (navigator.share) {
+          await navigator.share({
+            title: 'George Toclo - Portfolio',
+            text: 'Check out George Toclo\'s portfolio website',
+            url: 'https://geordy.netlify.app/'
+          });
+        } else {
+          // Fallback for browsers that don't support Web Share API
+          await navigator.clipboard.writeText('https://geordy.netlify.app/');
+          alert('Link copied to clipboard!');
+        }
+      } catch (error) {
+        console.log('Error sharing:', error);
+      }
+    });
+
     // Contact form submission with improved UX
     const contactForm = document.getElementById('contact-form');
     contactForm.addEventListener('submit', async function(e) {
       e.preventDefault();
-      
+
       const submitButton = contactForm.querySelector('button[type="submit"]');
       const originalButtonText = submitButton.innerHTML;
-      
+
       try {
         // Show loading state
         submitButton.disabled = true;
-        submitButton.innerHTML = '<i data-feather="loader" class="w-4 h-4 mr-2 animate-spin"></i>Sending...';
-        feather.replace();
-        
+        submitButton.innerHTML = '<div class="loading-spinner mr-2"></div>Sending...';
+
         // Simulate network delay
         await new Promise(resolve => setTimeout(resolve, 1500));
-        
+
         // Get form data
         const formData = new FormData(contactForm);
         const data = Object.fromEntries(formData);
-        
+        const subject = subjectButton.textContent === 'Choose subject' ? 'New message' : subjectButton.textContent;
+
         // Construct email subject and body
-        const subject = `New message from ${data['first-name']} ${data['last-name']}: ${data.subject}`;
-        const body = `Name: ${data['first-name']} ${data['last-name']}\nEmail: ${data.email}\n\nMessage:\n${data.message}`;
-        
+        const body = `Name: ${data['first-name']} ${data['last-name']}\nEmail: ${data.email}\nSubject: ${subject}\n\nMessage:\n${data.message}`;
+
         // Open default email client with pre-filled data
         window.location.href = `mailto:Georgetoclo123@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-        
+
         // Reset the form
         contactForm.reset();
+        subjectButton.textContent = 'Choose subject';
+        
+        // Remove selected class from all options
+        subjectOptions.forEach(opt => opt.classList.remove('selected'));
       } catch (error) {
         console.error('Error submitting form:', error);
       } finally {
         // Reset button state
         submitButton.disabled = false;
         submitButton.innerHTML = originalButtonText;
-        feather.replace();
       }
     });
 
@@ -669,7 +1032,7 @@
     document.addEventListener('mousedown', function() {
       document.body.classList.add('using-mouse');
     });
-    
+
     document.addEventListener('keydown', function() {
       document.body.classList.remove('using-mouse');
     });
