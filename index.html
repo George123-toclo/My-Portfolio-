@@ -2,1039 +2,425 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>George Toclo - Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Profile</title>
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Favicon -->
+  <link rel="icon" href="IMG_20250823_190549_023.webp" type="image/webp">
 
-  <!-- Tailwind -->
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-
-  <!-- Font Awesome for skill icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts: Poppins with weight 600 (semi-bold) -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
 
   <style>
     body {
+      margin: 0;
       font-family: 'Poppins', sans-serif;
-      font-weight: 500;
-      transition: background-color 0.5s ease, color 0.5s ease;
-      scroll-behavior: smooth;
-    }
-    .dark-mode {
-      background-color: #000000;
-      color: #f3f4f6;
-    }
-    .dark-mode .section-container {
-      background-color: #1a1a1a;
-      color: #f3f4f6;
-    }
-    .dark-mode .input-underline {
-      border-bottom-color: #4b5563;
-      color: #f3f4f6;
-    }
-    .dark-mode .input-underline:focus {
-      border-bottom-color: #f3f4f6;
-      box-shadow: 0 1px 0 0 #f3f4f6;
-    }
-    .dark-mode .input-underline::placeholder {
-      color: #9ca3af;
-    }
-    .dark-mode .bg-gray-50 {
-      background-color: #333333;
-    }
-    .dark-mode .hover\:bg-gray-100:hover {
-      background-color: #444444;
-    }
-    .dark-mode .text-gray-600 {
-      color: #d1d5db;
-    }
-    .dark-mode .text-gray-700 {
-      color: #e5e7eb;
-    }
-    .dark-mode .skill-tag {
-      background-color: #333333;
-      color: #f3f4f6;
-    }
-    .dark-mode .section-divider {
-      border-top-color: #333333;
-    }
-    .dark-mode .send-button {
-      background-color: #444444;
-      color: #f3f4f6;
-    }
-    .dark-mode .send-button:hover {
-      opacity: 0.9;
-    }
-
-    /* Button styles */
-    .action-button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.4rem 1rem;
-      border-radius: 40px;
-      font-size: 0.7rem;
-      font-weight: 500;
-      transition: all 0.3s ease;
-      background-color: #f0f0f0;
-      color: #111827;
-      min-width: 100px;
-    }
-    .dark-mode .action-button {
-      background-color: #333333;
-      color: #f3f4f6;
-    }
-    .action-button:hover {
-      background-color: #e0e0e0;
-      transform: translateY(-2px);
-    }
-    .dark-mode .action-button:hover {
-      background-color: #444444;
-    }
-
-    /* Social icon styles */
-    .social-icon {
-      width: 2rem;
-      height: 2rem;
+      font-weight: 600;
+      background: #f5f5f5;
+      color: #000;
+      text-align: center;
       display: flex;
+      flex-direction: column;
+      justify-content: center;
       align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      background-color: #f0f0f0;
-      transition: all 0.3s ease;
-    }
-    .dark-mode .social-icon {
-      background-color: #333333;
-      color: #f3f4f6;
-    }
-    .social-icon:hover {
-      background-color: #e0e0e0;
-      transform: translateY(-2px);
-    }
-    .dark-mode .social-icon:hover {
-      background-color: #444444;
-    }
-
-    /* Send button style */
-    .send-button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.5rem 1.5rem;
-      background-color: #f0f0f0;
-      color: #111827;
-      border-radius: 40px;
-      font-size: 0.75rem;
-      font-weight: 500;
-      transition: all 0.3s ease;
-      cursor: pointer;
-    }
-    .send-button:hover {
-      opacity: 0.9;
-      transform: translateY(-2px);
-      background-color: #e0e0e0;
-    }
-    .send-button i {
-      margin-right: 0.5rem;
-    }
-
-    /* Button container */
-    .button-container {
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    @media (min-width: 640px) {
-      .button-container {
-        justify-content: flex-start;
-      }
-    }
-
-    /* Input animation */
-    .input-underline {
-      border: none;
-      border-bottom: 1px solid #E5E7EB;
-      outline: none;
-      background-color: transparent;
-      transition: all 0.3s ease;
-      padding: 0.5rem 0;
-      font-size: 1rem;
-    }
-    @media (min-width: 768px) {
-      .input-underline {
-        font-size: 1.125rem;
-        padding: 0.625rem 0;
-      }
-    }
-    .input-underline:focus {
-      border-bottom-color: #111827;
-      box-shadow: 0 1px 0 0 #111827;
-    }
-    .dark-mode .input-underline:focus {
-      border-bottom-color: #f3f4f6;
-      box-shadow: 0 1px 0 0 #f3f4f6;
-    }
-    .input-underline::placeholder {
-      color: #9CA3AF;
-      font-size: 0.875rem;
-    }
-    @media (min-width: 768px) {
-      .input-underline::placeholder {
-        font-size: 1rem;
-      }
-    }
-    textarea.input-underline {
-      resize: none;
-    }
-
-    /* Section styling */
-    .section-container {
-      background-color: white;
-      border-radius: 40px;
-      padding: 1.5rem;
-      margin-bottom: 1.5rem;
-      transition: all 0.5s ease;
+      min-height: 100vh;
+      padding: 20px;
+      box-sizing: border-box;
       position: relative;
     }
-    .section-divider {
-      border-top: 1px solid #E5E7EB;
-      margin: 1.5rem 0;
-      transition: border-color 0.3s ease;
-    }
 
-    /* Contact item styling */
-    .contact-item {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      padding: 0.5rem 0;
-      transition: transform 0.3s ease;
-    }
-    .contact-item:hover {
-      transform: translateX(5px);
-    }
-    .contact-icon {
-      width: 20px;
-      height: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    /* Remove blue highlight on click */
-    * {
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    /* Skill tags */
-    .skill-tag {
-      border-radius: 20px;
-      transition: all 0.3s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.3rem;
-    }
-    .skill-tag:hover {
-      transform: translateY(-2px);
-    }
-
-    /* Fade-in animation for page load */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .fade-in {
-      animation: fadeIn 0.8s ease-out forwards;
-    }
-
-    /* Call now button */
-    .call-now-button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.25rem 0.75rem;
-      background-color: #4ade80; /* Light green */
-      color: #111827;
-      border-radius: 40px;
-      font-size: 0.7rem;
-      font-weight: 500;
-      transition: all 0.3s ease;
-      margin-left: 0.5rem;
-    }
-    .dark-mode .call-now-button {
-      background-color: #22c55e; /* Darker green for dark mode */
-      color: #f3f4f6;
-    }
-    .call-now-button i {
-      margin-right: 0.3rem;
-    }
-
-    /* Title divider */
-    .title-divider {
-      border-bottom: 1px solid #E5E7EB;
-      margin: 0.5rem 0 1rem;
-      width: 100%;
-    }
-    .dark-mode .title-divider {
-      border-bottom-color: #333333;
-    }
-
-    /* Menu styles */
-    .menu-button {
-      position: absolute;
-      top: 1.5rem;
-      right: 1.5rem;
-      z-index: 10;
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: #f0f0f0;
-      color: #111827;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    .dark-mode .menu-button {
-      background-color: #333333;
-      color: #f3f4f6;
-    }
-    .menu-button:hover {
-      background-color: #e0e0e0;
-    }
-    .dark-mode .menu-button:hover {
-      background-color: #444444;
-    }
-    .menu-panel {
-      position: absolute;
-      top: 4rem;
-      right: 1.5rem;
-      width: 200px;
-      background: rgba(255, 255, 255, 0.8);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border-radius: 40px;
-      padding: 1rem;
-      z-index: 20;
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(-10px);
-      transition: all 0.3s ease;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    }
-    .dark-mode .menu-panel {
-      background: rgba(26, 26, 26, 0.8);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    }
-    .menu-open .menu-panel {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-    .menu-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.5rem 0;
-    }
-    .menu-label {
-      font-size: 0.875rem;
-      color: #4b5563;
-    }
-    .dark-mode .menu-label {
-      color: #d1d5db;
-    }
-
-    /* Toggle switch */
-    .toggle-switch {
-      position: relative;
-      display: inline-block;
-      width: 40px;
-      height: 20px;
-    }
-    .toggle-switch input {
-      opacity: 0;
-      width: 0;
-      height: 0;
-    }
-    .slider {
-      position: absolute;
-      cursor: pointer;
-      top: 0;
+    body::after {
+      content: '';
+      position: fixed;
       left: 0;
       right: 0;
       bottom: 0;
-      background-color: #ccc;
-      transition: .4s;
-      border-radius: 34px;
-    }
-    .slider:before {
-      position: absolute;
-      content: "";
-      height: 16px;
-      width: 16px;
-      left: 2px;
-      bottom: 2px;
-      background-color: white;
-      transition: .4s;
-      border-radius: 50%;
-    }
-    input:checked + .slider {
-      background-color: #22c55e;
-    }
-    input:checked + .slider:before {
-      transform: translateX(20px);
+      height: 100px;
+      background: linear-gradient(to top, #f5f5f5, transparent);
+      z-index: 1000;
+      pointer-events: none; /* Allows clicks to pass through the fade */
     }
 
-    /* QR Code */
-    .qr-code {
+    .container {
+      max-width: 1200px;
       width: 100%;
+      margin: 0 auto;
       display: flex;
-      justify-content: center;
-      margin-top: 1rem;
-    }
-    .qr-code img {
-      width: 120px;
-      height: 120px;
-      border-radius: 12px;
+      flex-direction: column;
+      align-items: center; /* Center all content */
     }
 
-    /* Subject dropdown */
-    .subject-dropdown {
-      position: relative;
-      display: inline-block;
-      margin-left: 0.5rem;
+    .avatar {
+      width: 40vw;
+      max-width: 200px;
+      min-width: 140px;
+      aspect-ratio: 1/1;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #ddd;
+      margin: 0 auto; /* Center avatar */
     }
-    
-    /* From Uiverse.io by WhiteNervosa */
-    .subject-text-button {
-      font-size: 14px;
-      color: #4b5563;
-      font-family: inherit;
+
+    h1 {
+      margin: 20px 0 8px;
+      font-size: clamp(1.8rem, 5vw, 2.5rem);
+      font-weight: 600;
+      color: #000;
+    }
+
+    .bio-container {
+      position: relative;
+      max-width: 500px;
+      width: 100%;
+      margin: 0 auto;
+      overflow: hidden;
+      transition: max-height 0.5s ease-in-out; /* Smooth dropdown transition */
+    }
+
+    .bio-container.truncated {
+      max-height: 60px; /* Adjust to show ~2 lines of text */
+    }
+
+    .bio-container p {
+      margin: 0;
+      font-size: clamp(1rem, 3vw, 1.2rem);
+      font-weight: 600;
+      color: #000;
+      text-align: center;
+    }
+
+    .bio-container.truncated::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 30px;
+      background: linear-gradient(to top, #f5f5f5, transparent);
+      pointer-events: none;
+    }
+
+    .bio-toggle {
+      background: #fff;
+      color: #000;
+      border: none;
+      border-radius: 40px;
+      padding: 8px 16px;
+      font-size: clamp(0.9rem, 2.5vw, 1rem);
+      font-family: 'Poppins', sans-serif;
       font-weight: 600;
       cursor: pointer;
-      position: relative;
-      border: none;
-      background: none;
-      transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
-      transition-duration: 400ms;
-      transition-property: color;
-      padding: 0;
-    }
-    .dark-mode .subject-text-button {
-      color: #d1d5db;
-    }
-    .subject-text-button:focus,
-    .subject-text-button:hover {
-      color: #3b82f6;
-    }
-    .dark-mode .subject-text-button:focus,
-    .dark-mode .subject-text-button:hover {
-      color: #93c5fd;
-    }
-    .subject-text-button:focus:after,
-    .subject-text-button:hover:after {
-      width: 100%;
-      left: 0%;
-    }
-    .subject-text-button:after {
-      content: "";
-      pointer-events: none;
-      bottom: -2px;
-      left: 50%;
-      position: absolute;
-      width: 0%;
-      height: 2px;
-      background-color: #3b82f6;
-      transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
-      transition-duration: 400ms;
-      transition-property: width, left;
-    }
-    .dark-mode .subject-text-button:after {
-      background-color: #93c5fd;
-    }
-    
-    .subject-dropdown-content {
-      display: none;
-      position: absolute;
-      background-color: white;
-      min-width: 160px;
-      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
-      z-index: 1;
-      border-radius: 8px;
-      overflow: hidden;
-      animation: dropdownFade 0.3s ease forwards;
-      transform-origin: top center;
-    }
-    .dark-mode .subject-dropdown-content {
-      background-color: #1a1a1a;
-      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.3);
-    }
-    .subject-dropdown-content.show {
-      display: block;
-    }
-    .subject-option {
-      padding: 0.75rem 1rem;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      font-size: 0.875rem;
-    }
-    .subject-option:hover {
-      background-color: #f0f0f0;
-    }
-    .dark-mode .subject-option:hover {
-      background-color: #333333;
-    }
-    .subject-option.selected {
-      background-color: #e0e7ff;
-      color: #3730a3;
-    }
-    .dark-mode .subject-option.selected {
-      background-color: #3730a3;
-      color: #e0e7ff;
-    }
-    
-    @keyframes dropdownFade {
-      from {
-        opacity: 0;
-        transform: translateY(-10px) scale(0.95);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
+      margin-top: 10px;
+      transition: background 0.3s ease; /* Keep background transition, remove transform */
+      -webkit-tap-highlight-color: transparent; /* Remove tap highlight */
     }
 
-    /* Loading spinner */
-    .loading-spinner {
-      display: inline-block;
+    .bio-toggle:hover {
+      background: #ddd;
+    }
+
+    .bio-toggle:focus {
+      outline: none; /* Remove blue focus outline */
+    }
+
+    .contact-card, .skills-card, .projects-card, .links-card {
+      margin: 30px auto 0; /* Center cards */
+      background: #eee;
+      border-radius: 28px;
+      padding: 15px 20px;
+      max-width: 350px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      box-sizing: border-box;
+    }
+
+    .contact-item, .skill-item, .project-item, .link-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: clamp(0.9rem, 2.5vw, 1rem);
+      font-weight: 600;
+      color: #000;
+      transition: transform 0.3s ease;
+    }
+
+    .contact-item svg, .skill-item svg, .project-item svg, .link-item svg {
       width: 20px;
       height: 20px;
-      border: 3px solid rgba(255, 255, 255, 0.3);
-      border-radius: 50%;
-      border-top-color: #fff;
-      animation: spin 1s ease-in-out infinite;
+      flex-shrink: 0;
     }
-    @keyframes spin {
-      to { transform: rotate(360deg); }
+
+    .contact-item a, .project-item a, .link-item a {
+      color: #777;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+      -webkit-tap-highlight-color: transparent; /* Remove tap highlight */
     }
-    
-    /* Upwork button styling */
-    .upwork-button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.4rem 0.8rem;
+
+    .contact-item:hover, .skill-item:hover, .project-item:hover, .link-item:hover {
+      transform: translateX(10px);
+    }
+
+    .contact-item a:hover, .project-item a:hover, .link-item a:hover {
+      color: #555;
+    }
+
+    .contact-item button {
+      background: #fff;
+      color: #000;
+      border: none;
       border-radius: 40px;
-      font-size: 0.7rem;
-      font-weight: 500;
-      transition: all 0.3s ease;
-      background-color: #f0f0f0;
-      color: #111827;
-      min-width: auto;
-    }
-    .dark-mode .upwork-button {
-      background-color: #333333;
-      color: #f3f4f6;
-    }
-    .upwork-button:hover {
-      background-color: #e0e0e0;
-      transform: translateY(-2px);
-    }
-    .dark-mode .upwork-button:hover {
-      background-color: #444444;
-    }
-    .upwork-icon {
-      width: 14px;
-      height: 14px;
-      margin-right: 0.3rem;
-    }
-    
-    /* Share button */
-    .share-button {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.5rem;
-      background-color: #f0f0f0;
-      color: #111827;
-      border-radius: 40px;
-      font-size: 0.75rem;
-      font-weight: 500;
-      transition: all 0.3s ease;
+      padding: 8px 16px;
+      font-size: clamp(0.9rem, 2.5vw, 1rem);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
       cursor: pointer;
-      margin-top: 1rem;
-      width: 100%;
+      transition: background 0.3s ease, transform 0.3s ease;
+      -webkit-tap-highlight-color: transparent; /* Remove tap highlight */
     }
-    .dark-mode .share-button {
-      background-color: #333333;
-      color: #f3f4f6;
+
+    .contact-item button:hover {
+      background: #ddd;
+      transform: translateX(10px);
     }
-    .share-button:hover {
-      background-color: #e0e0e0;
+
+    .contact-item button:focus {
+      outline: none; /* Remove blue focus outline */
     }
-    .dark-mode .share-button:hover {
-      background-color: #444444;
-    }
-    
-    /* Menu divider */
-    .menu-divider {
-      border-top: 1px solid #E5E7EB;
-      margin: 0.75rem 0;
-      width: 100%;
-    }
-    .dark-mode .menu-divider {
-      border-top-color: #333333;
-    }
-    
-    /* Website button */
-    .website-button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.25rem 0.75rem;
-      background-color: #93c5fd;
-      color: #111827;
-      border-radius: 40px;
-      font-size: 0.7rem;
-      font-weight: 500;
-      transition: all 0.3s ease;
-      margin-left: 0.5rem;
-      cursor: pointer;
-    }
-    .dark-mode .website-button {
-      background-color: #3b82f6;
-      color: #f3f4f6;
-    }
-    .website-button:hover {
-      opacity: 0.9;
-    }
-    
-    /* Action buttons row */
-    .action-buttons-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 1rem;
-      justify-content: center;
-    }
-    @media (min-width: 640px) {
-      .action-buttons-row {
-        justify-content: flex-start;
+
+    /* Media query for larger screens */
+    @media (min-width: 768px) {
+      .avatar {
+        max-width: 250px;
+      }
+
+      h1 {
+        font-size: clamp(2rem, 4vw, 3rem);
+        font-weight: 600;
+      }
+
+      .bio-container p {
+        font-size: clamp(1.1rem, 2vw, 1.4rem);
+        max-width: 600px;
+      }
+
+      .contact-card, .skills-card, .projects-card, .links-card {
+        max-width: 500px;
+        padding: 20px 30px;
+        margin: 30px auto; /* Ensure cards are centered */
+      }
+
+      .contact-item, .skill-item, .project-item, .link-item {
+        font-size: clamp(1rem, 1.5vw, 1.2rem);
+        font-weight: 600;
+      }
+
+      .contact-item button, .bio-toggle {
+        font-size: clamp(1rem, 1.5vw, 1.2rem);
+        font-weight: 600;
       }
     }
   </style>
 </head>
-<body class="bg-gray-50 text-gray-900 antialiased text-sm">
-  <main class="min-h-screen">
-    <section class="max-w-6xl mx-auto p-4 md:p-8">
+<body>
+  <div class="container">
+    <!-- Avatar Image -->
+    <img src="IMG-20250808-WA0006(1).jpg" alt="Profile Picture" class="avatar">
 
-      <!-- HEADER -->
-      <div class="section-container fade-in" style="animation-delay: 0.1s">
-        <!-- Menu Button -->
-        <button class="menu-button" id="menu-button" aria-label="Open menu">
-          <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="20" height="20" version="1.1" viewBox="0 0 1707 1707">
-            <path fill="currentColor" d="M575 727c-75,0 -136,-61 -136,-135 0,-75 61,-135 136,-135 74,0 135,60 135,135 0,74 -61,135 -135,135z"></path>
-            <path fill="currentColor" d="M802 448c-91,0 -165,-74 -165,-165 0,-91 74,-164 165,-164 91,0 165,73 165,164 0,91 -74,165 -165,165z"></path>
-            <path fill="currentColor" d="M1148 303c-74,0 -135,-60 -135,-135 0,-74 61,-135 135,-135 75,0 135,61 135,135 0,75 -60,135 -135,135z"></path>
-            <path fill="currentColor" d="M1148 745c-105,0 -190,-85 -190,-190 0,-104 85,-189 190,-189 105,0 190,85 190,189 0,105 -85,190 -190,190z"></path>
-            <path fill="currentColor" d="M843 985c-74,0 -135,-61 -135,-135 0,-75 61,-135 135,-135 75,0 135,60 135,135 0,74 -60,135 -135,135z"></path>
-            <path fill="currentColor" d="M470 1117c-92,0 -167,-75 -167,-167 0,-92 75,-167 167,-167 92,0 167,75 167,167 0,92 -75,167 -167,167z"></path>
-            <path fill="currentColor" d="M1205 1151c-92,0 -167,-75 -167,-167 0,-92 75,-167 167,-167 92,0 167,75 167,167 0,92 -75,167 -167,167z"></path>
-            <path fill="currentColor" d="M333 466c-92,0 -167,-75 -167,-167 0,-92 75,-167 167,-167 92,0 167,75 167,167 0,92 -75,167 -167,167z"></path>
-            <path fill="currentColor" d="M142 821c-74,0 -135,-60 -135,-135 0,-74 61,-135 135,-135 75,0 135,61 135,135 0,75 -60,135 -135,135z"></path>
-            <path fill="currentColor" d="M1478 464c-74,0 -135,-61 -135,-135 0,-75 61,-135 135,-135 74,0 135,60 135,135 0,74 -61,135 -135,135z"></path>
-            <path fill="currentColor" d="M1508 887c-75,0 -136,-60 -136,-135 0,-74 61,-135 136,-135 74,0 135,61 135,135 0,75 -61,135 -135,135z"></path>
-            <path fill="currentColor" d="M893 1367c-74,0 -135,-60 -135,-135 0,-74 61,-135 135,-135 75,0 135,61 135,135 0,75 -60,135 -135,135z"></path>
-            <path fill="currentColor" d="M427 1483c-85,0 -154,-68 -154,-153 0,-84 69,-153 154,-153 84,0 153,69 153,153 0,85 -69,153 -153,153z"></path>
-            <path fill="currentColor" d="M135 1174c-74,0 -135,-61 -135,-135 0,-75 61,-135 135,-135 75,0 135,60 135,135 0,74 -60,135 -135,135z"></path>
-            <path fill="currentColor" d="M1262 1496c-75,0 -135,-61 -135,-135 0,-75 60,-135 135,-135 74,0 135,60 135,135 0,74 -61,135 -135,135z"></path>
-            <path fill="currentColor" d="M1571 1205c-74,0 -135,-61 -135,-135 0,-75 61,-136 135,-136 75,0 135,61 135,136 0,74 -60,135 -135,135z"></path>
-            <path fill="currentColor" d="M752 1673c-74,0 -135,-60 -135,-135 0,-74 61,-135 135,-135 75,0 135,61 135,135 0,75 -60,135 -135,135z"></path>
-          </svg>
-        </button>
+    <h1>George Toclo</h1>
+    <div class="bio-container truncated" id="bioContainer">
+      <p id="bioText">I'm an aspiring web developer and designer learning to build fast, accessible websites with clean, simple interfaces. Looking forward to gaining experience and working on real projects.</p>
+    </div>
+    <button class="bio-toggle" id="bioToggle">Show More</button>
 
-        <!-- Menu Panel -->
-        <div class="menu-panel" id="menu-panel">
-          <div class="menu-item">
-            <span class="menu-label">Dark Mode</span>
-            <label class="toggle-switch">
-              <input type="checkbox" id="theme-toggle">
-              <span class="slider"></span>
-            </label>
-          </div>
-          <div class="menu-divider"></div>
-          <div class="qr-code">
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://geordy.netlify.app/" alt="QR Code">
-          </div>
-          <button class="share-button" id="share-button">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16" class="mr-2">
-              <path d="M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5"/>
-            </svg> Share
-          </button>
-        </div>
-
-        <header class="flex flex-col md:flex-row items-center gap-6 text-center md:text-left">
-          <!-- Profile image -->
-          <img src="IMG-20250808-WA0006.jpg" 
-               alt="George Toclo profile picture" 
-               class="w-28 h-28 md:w-32 md:h-32 rounded-full object-cover transition-transform duration-300 hover:scale-105">
-
-          <div class="flex-1">
-            <h1 class="text-xl md:text-2xl font-bold">George Toclo</h1>
-            <p class="text-gray-600">Web Developer</p>
-            <div class="title-divider"></div>
-            <p class="mt-3 text-gray-700 max-w-2xl text-sm">
-              I'm an aspiring web developer and designer learning to build fast, 
-              accessible websites with clean, simple interfaces. Looking forward to 
-              gaining experience and working on real projects.
-            </p>
-
-            <div class="mt-4 flex flex-col items-center md:items-start gap-3">
-              <div class="action-buttons-row">
-                <a href="mailto:Georgetoclo123@gmail.com" 
-                   class="action-button">
-                   <svg version="1.1" viewBox="0 0 32 32" width="14" height="14" class="mr-2">
-                    <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M25,27H7c-2.2,0-4-1.8-4-4V9c0-2.2,1.8-4,4-4h18c2.2,0,4,1.8,4,4v14C29,25.2,27.2,27,25,27z"></path>
-                    <polyline fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="3,10 16,18 29,10 "></polyline>
-                  </svg> Email Me
-                </a>
-                <a href="https://github.com/George123-toclo" target="_blank" class="action-button">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16" class="mr-2">
-                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
-                  </svg> GitHub
-                </a>
-                <a href="https://www.upwork.com/freelancers/~01482f5cd761e544bd" target="_blank" class="action-button">
-                  <svg class="upwork-icon" viewBox="0 0 512 153" fill="currentColor">
-                    <path d="M140.106589,96.6278184 C131.785652,96.6278184 123.989458,93.1045388 116.905417,87.3698389 L118.629575,79.2737921 L118.704539,78.9739385 C120.241288,70.3531479 125.113909,55.8852123 140.106589,55.8852123 C151.351098,55.8852123 160.496633,65.0307467 160.496633,76.2752562 C160.459151,87.482284 151.313616,96.6278184 140.106589,96.6278184 L140.106589,96.6278184 Z M140.106589,35.2327965 C120.953441,35.2327965 106.110688,47.6767204 100.076135,68.1417277 C90.8556369,54.310981 83.884041,37.7065886 79.7985359,23.7259151 L59.1836018,23.7259151 L59.1836018,77.3622255 C59.1836018,87.9320644 50.5628111,96.5528551 39.9929722,96.5528551 C29.4231332,96.5528551 20.8023426,87.9320644 20.8023426,77.3622255 L20.8023426,23.7259151 L0.187408492,23.7259151 L0.187408492,77.3622255 C0.112445095,99.3265007 17.9912152,117.355198 39.9554905,117.355198 C61.9197657,117.355198 79.7985359,99.3265007 79.7985359,77.3622255 L79.7985359,68.3666179 C83.8090776,76.7250366 88.7191801,85.1584187 94.6787701,92.6547584 L82.0474378,152.025769 L103.149634,152.025769 L112.295168,108.959297 C120.316252,114.09429 129.53675,117.317716 140.106589,117.317716 C162.708053,117.317716 181.111567,98.801757 181.111567,76.2002928 C181.111567,53.6363104 162.708053,35.2327965 140.106589,35.2327965 L140.106589,35.2327965 Z" fill="#6FDA44"></path>
-                    <path d="M244.043338,37.5566618 L257.349341,91.1929722 L272.004685,37.5566618 L289.471157,37.5566618 L266.944656,115.068814 L249.478184,115.068814 L235.647438,61.0951684 L221.854173,115.031332 L204.387701,115.031332 L181.861201,37.5191801 L199.327672,37.5191801 L213.983016,91.1554905 L227.289019,37.5191801 L244.043338,37.5191801 L244.043338,37.5566618 Z M331.26325,35.2327965 C308.586823,35.2327965 290.220791,53.6363104 290.220791,76.2752562 C290.220791,98.9516837 308.624305,117.317716 331.26325,117.317716 C353.939678,117.317716 372.343192,98.9516837 372.343192,76.2752562 C372.343192,53.5988287 353.939678,35.2327965 331.26325,35.2327965 Z M331.26325,100.450952 C317.919766,100.450952 307.125037,89.6562225 307.125037,76.3127379 C307.125037,62.9692533 317.957247,52.1745242 331.26325,52.1745242 C344.606735,52.1745242 355.401464,62.9692533 355.401464,76.3127379 C355.401464,89.6187408 344.606735,100.450952 331.26325,100.450952 Z M422.231332,54.9106881 C410.499561,54.9106881 401.016691,64.4310395 401.016691,76.1253294 L401.016691,115.031332 L383.437775,115.031332 L383.437775,37.5566618 L401.016691,37.5566618 L401.016691,49.4758419 C401.016691,49.4758419 408.513031,37.5191801 423.918009,37.5191801 L429.315373,37.5191801 L429.315373,54.9106881 L422.231332,54.9106881 Z M481.227526,73.2767204 C493.708931,66.2301611 502.179795,52.8491947 502.179795,37.5191801 L484.600878,37.5191801 C484.600878,50.450366 474.106003,60.9452416 461.174817,60.9452416 L458.81347,60.9452416 L458.81347,0.149926794 L441.234553,0.149926794 L441.234553,115.031332 L458.81347,115.031332 L458.81347,78.5241581 L460.912445,78.5241581 C462.636603,78.5241581 464.885505,79.6486091 465.897511,81.0354319 L490.860322,115.031332 L511.925037,115.031332 L481.227526,73.2767204 Z" fill="currentColor"></path>
-                  </svg> Upwork
-                </a>
-              </div>
-              <div class="flex gap-2">
-                <a href="https://x.com/geordy_1324?t=KdS_7ZiEKmBikp9NKPsing&s=09" target="_blank" class="social-icon" aria-label="Twitter">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
-                    <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/>
-                  </svg>
-                </a>
-                <a href="https://wa.me/231886181331" target="_blank" class="social-icon" aria-label="WhatsApp">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
-                    <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.240-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.050-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.50-.099-.445-1.076-.612-1.47-.160-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.709 1.916.809 2.049c.099.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
-                  </svg>
-                </a>
-                <a href="https://www.instagram.com/imgrgtz?igsh=MWhoc3BueXFodXlwaQ==" target="_blank" class="social-icon" aria-label="Instagram">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
-                    <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.280-.546.453-.92.598-.280.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/>
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </div>
-        </header>
+    <!-- Contact Card -->
+    <div class="contact-card">
+      <!-- Location -->
+      <div class="contact-item">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+          <path fill="none" stroke="#000" stroke-width="2" stroke-linejoin="round" d="M25,13c0,8-9,15-9,15s-9-7-9-15c0-5,4-9,9-9S25,8,25,13z"/>
+          <circle fill="none" stroke="#000" stroke-width="2" stroke-linejoin="round" cx="16" cy="13" r="3"/>
+        </svg>
+        <span>Buchanan, Liberia</span>
       </div>
 
-      <!-- CONTACT + SKILLS -->
-      <div class="section-container fade-in" style="animation-delay: 0.2s">
-        <div class="flex flex-col md:flex-row md:items-start md:gap-8">
-          <!-- Contact -->
-          <div class="flex-1">
-            <h3 class="font-semibold text-base mb-3">Contact</h3>
-            <div class="space-y-1">
-              <div class="contact-item">
-                <div class="contact-icon">
-                  <svg width="16" height="16" viewBox="0 0 64 64" fill="none">
-                    <path d="M32 2.5C26.3003 2.50794 20.8363 4.77566 16.806 8.80597C12.7757 12.8363 10.5079 18.3003 10.5 24C10.5 35.44 30 59.9 30.83 60.94C30.9706 61.1152 31.1487 61.2566 31.3512 61.3537C31.5537 61.4509 31.7754 61.5013 32 61.5013C32.2246 61.5013 32.4463 61.4509 32.6488 61.3537C32.8513 61.2566 33.0294 61.1152 33.17 60.94C34 59.9 53.5 35.44 53.5 24C53.4921 18.3003 51.2243 12.8363 47.194 8.80597C43.1637 4.77566 37.6997 2.50794 32 2.5V2.5Z" fill="#F0454E"></path>
-                    <path d="M32 36.79C39.0637 36.79 44.79 31.0637 44.79 24C44.79 16.9362 39.0637 11.21 32 11.21C24.9362 11.21 19.21 16.9362 19.21 24C19.21 31.0637 24.9362 36.79 32 36.79Z" fill="#E6E6E6"></path>
-                    <path d="M32 2.5C26.3003 2.50794 20.8363 4.77566 16.806 8.80597C12.7757 12.8363 10.5079 18.3003 10.5 24C10.5 35.44 30 59.9 30.83 60.94C30.9706 61.1152 31.1487 61.2566 31.3512 61.3537C31.5537 61.4509 31.7754 61.5013 32 61.5013C32.2246 61.5013 32.4463 61.4509 32.6488 61.3537C32.8513 61.2566 33.0294 61.1152 33.17 60.94C34 59.9 53.5 35.44 53.5 24C53.4921 18.3003 51.2243 12.8363 47.194 8.80597C43.1637 4.77566 37.6997 2.50794 32 2.5V2.5ZM32 57.56C27.76 52.07 13.5 32.9 13.5 24C13.5 19.0935 15.4491 14.3879 18.9185 10.9185C22.3879 7.4491 27.0935 5.5 32 5.5C36.9065 5.5 41.6121 7.4491 45.0815 10.9185C48.5509 14.3879 50.5 19.0935 50.5 24C50.5 32.9 36.24 52.07 32 57.56Z" fill="currentColor"></path>
-                    <path d="M32 11.21C29.4703 11.21 26.9975 11.9601 24.8942 13.3655C22.7909 14.7708 21.1516 16.7684 20.1835 19.1054C19.2155 21.4425 18.9622 24.0141 19.4557 26.4952C19.9492 28.9762 21.1674 31.2551 22.9561 33.0439C24.7448 34.8326 27.0237 36.0507 29.5048 36.5442C31.9858 37.0377 34.5574 36.7844 36.8945 35.8164C39.2316 34.8483 41.2291 33.209 42.6345 31.1057C44.0398 29.0024 44.79 26.5296 44.79 24C44.7847 20.6095 43.4355 17.3594 41.038 14.9619C38.6406 12.5645 35.3905 11.2153 32 11.21ZM32 33.79C30.0637 33.79 28.1709 33.2158 26.5609 32.14C24.951 31.0643 23.6962 29.5353 22.9552 27.7464C22.2142 25.9575 22.0203 23.9891 22.3981 22.09C22.7758 20.191 23.7082 18.4465 25.0774 17.0774C26.4465 15.7082 28.191 14.7758 30.09 14.3981C31.9891 14.0203 33.9575 14.2142 35.7464 14.9552C37.5353 15.6962 39.0643 16.951 40.1401 18.5609C41.2158 20.1709 41.79 22.0637 41.79 24C41.7873 26.5956 40.755 29.0842 38.9196 30.9196C37.0842 32.755 34.5956 33.7873 32 33.79V33.79Z" fill="currentColor"></path>
-                  </svg>
-                </div>
-                <span class="text-gray-600 text-sm">Buchanan, Liberia</span>
-              </div>
-              <div class="contact-item">
-                <div class="contact-icon">
-                  <svg version="1.1" viewBox="0 0 32 32" width="16" height="16">
-                    <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M25,27H7c-2.2,0-4-1.8-4-4V9c0-2.2,1.8-4,4-4h18c2.2,0,4,1.8,4,4v14C29,25.2,27.2,27,25,27z"></path>
-                    <polyline fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="3,10 16,18 29,10 "></polyline>
-                  </svg>
-                </div>
-                <span class="text-gray-600 text-sm">Georgetoclo123@gmail.com</span>
-              </div>
-              <div class="contact-item">
-                <div class="contact-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
-                    <path d="M15.05 5A5 5 0 0 1 19 8.95M15.05 1A9 9 0 0 1 23 8.94m-1 7.98v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                  </svg>
-                </div>
-                <span class="text-gray-600 text-sm">+231 886 181 331</span>
-                <a href="tel:+231886181331" class="call-now-button">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="12" height="12" class="mr-1">
-                    <path d="M15.05 5A5 5 0 0 1 19 8.95M15.05 1A9 9 0 0 1 23 8.94m-1 7.98v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                  </svg> Call Now
-                </a>
-              </div>
-              <div class="contact-item">
-                <div class="contact-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
-                    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
-                    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-                  </svg>
-                </div>
-                <span class="text-gray-600 text-sm">geordy.netlify.app</span>
-                <a href="https://geordy.netlify.app/" target="_blank" class="website-button">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="12" height="12" class="mr-1">
-                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                    <polyline points="15 3 21 3 21 9"></polyline>
-                    <line x1="10" y1="14" x2="21" y2="3"></line>
-                  </svg> Visit
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Divider - Mobile -->
-          <div class="md:hidden section-divider"></div>
-          <!-- Divider - Desktop -->
-          <div class="hidden md:block w-px bg-gray-200"></div>
-
-          <!-- Skills -->
-          <div class="flex-1 mt-4 md:mt-0">
-            <h3 class="font-semibold text-base mb-3">Skills</h3>
-            <div class="flex flex-wrap gap-2">
-              <span class="text-xs px-3 py-1 bg-gray-100 skill-tag">
-                <i class="fab fa-html5 text-orange-500"></i> HTML
-              </span>
-              <span class="text-xs px-3 py-1 bg-gray-100 skill-tag">
-                <i class="fab fa-css3-alt text-blue-500"></i> CSS
-              </span>
-              <span class="text-xs px-3 py-1 bg-gray-100 skill-tag">
-                <i class="fab fa-js-square text-yellow-500"></i> JavaScript
-              </span>
-              <span class="text-xs px-3 py-1 bg-gray-100 skill-tag">Editor X</span>
-              <span class="text-xs px-3 py-1 bg-gray-100 skill-tag">Figma</span>
-            </div>
-          </div>
-        </div>
+      <!-- Email -->
+      <div class="contact-item">
+        <svg version="1.1" id="Icons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve">
+          <style type="text/css">
+            .st0{fill:none;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+            .st1{fill:none;stroke:#000000;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:10;}
+          </style>
+          <polyline class="st0" points="11,12 21,18 31,12 "></polyline>
+          <line class="st0" x1="4" y1="12" x2="11" y2="12"></line>
+          <line class="st0" x1="1" y1="16" x2="12" y2="16"></line>
+          <line class="st0" x1="4" y1="20" x2="11" y2="20"></line>
+          <path class="st0" d="M11,12v-1c0-2.2,1.8-4,4-4h12c2.2,0,4,1.8,4,4v10c0,2.2-1.8,4-4,4H15c-2.2,0-4-1.8-4-4v-1"></path>
+        </svg>
+        <a href="mailto:GeorgeToclo123@gmail.com">georgetoclo123@gmail.com</a>
       </div>
 
-      <!-- PROJECTS -->
-      <div class="section-container fade-in" style="animation-delay: 0.3s">
-        <h2 class="text-lg font-semibold">Upcoming Projects</h2>
-        <div class="section-divider"></div>
-        <p class="text-gray-600 text-sm">Projects coming soon. Stay tuned for updates!</p>
+      <!-- Phone -->
+      <div class="contact-item">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+          <path fill="none" stroke="#000" stroke-width="2" stroke-linejoin="round" d="M17.6,18.8c-0.4,0.4-0.8,1-1.1,1.5c-1.8-1.4-3.4-3.1-4.8-4.8c0.6-0.3,1.1-0.7,1.5-1.1c2-2,1.3-4.6-0.7-6.6
+            S8,5,5.9,7.1s-2.3,5.7-0.7,8c2.9,4.4,7.3,8.8,11.7,11.7c2.4,1.6,6,1.3,8-0.7s1.3-4.6-0.7-6.6S19.6,16.7,17.6,18.8z"/>
+          <path fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M27.9,13.9c0-5.5-4.4-9.9-9.9-9.9"/>
+          <path fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M23,13.7c0-2.6-2.2-4.7-4.9-4.7"/>
+        </svg>
+        <a href="tel:+231886181331">+231 886 181 331</a>
       </div>
 
-      <!-- CONTACT FORM -->
-      <div class="section-container fade-in" style="animation-delay: 0.4s">
-        <h2 class="text-lg font-semibold">Get in touch</h2>
-        <div class="flex flex-col sm:flex-row sm:items-center">
-          <p class="text-gray-600 mt-1 text-sm flex-1">
-            I'm open to freelance work and full-time opportunities. Email me directly.
-          </p>
-          <div class="subject-dropdown">
-            <button class="subject-text-button" id="subject-button">
-              Choose subject
-            </button>
-            <div class="subject-dropdown-content" id="subject-dropdown">
-              <div class="subject-option" data-subject="Just saying hello">Just saying hello</div>
-              <div class="subject-option" data-subject="Freelance project">Freelance project</div>
-              <div class="subject-option" data-subject="Job opportunity">Job opportunity</div>
-              <div class="subject-option" data-subject="Collaboration">Collaboration</div>
-              <div class="subject-option" data-subject="Other">Other</div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="section-divider"></div>
-        <form id="contact-form" class="grid grid-cols-1 gap-4">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <label class="block text-gray-700 text-xs mb-1">First Name</label>
-              <input name="first-name" class="input-underline w-full" placeholder="Enter your first name" required>
-            </div>
-            <div>
-              <label class="block text-gray-700 text-xs mb-1">Last Name</label>
-              <input name="last-name" class="input-underline w-full" placeholder="Enter your last name" required>
-            </div>
-          </div>
-          <div>
-            <label class="block text-gray-700 text-xs mb-1">Email</label>
-            <input type="email" name="email" class="input-underline w-full" placeholder="Enter your email address" required>
-          </div>
-          <div>
-            <label class="block text-gray-700 text-xs mb-1">Message</label>
-            <textarea name="message" rows="4" class="input-underline w-full" placeholder="Type your message here..." required></textarea>
-          </div>
-          <button type="submit" class="send-button w-full sm:w-auto">
-            <svg version="1.1" viewBox="0 0 32 32" width="14" height="14" class="mr-2">
-              <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M26.4,2.9L3.8,15c-0.7,0.4-0.7,1.5,0.1,1.8l20.8,8.7c0.6,0.3,1.3-0.2,1.4-0.8l1.7-20.8 C27.9,3,27.1,2.5,26.4,2.9z"></path>
-              <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M26,4L13,20v7.3c0,0.9,1.2,1.4,1.8,0.7L19,23"></path>
-            </svg> Send Message
-          </button>
-        </form>
+      <!-- Message Me Button -->
+      <div class="contact-item">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <mask id="mask0_2127_8859" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="1" y="1" width="22" height="22">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M1 1.00024H22.493V22.494H1V1.00024Z" fill="white"></path>
+          </mask>
+          <g mask="url(#mask0_2127_8859)">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M6.10844 19.6752C6.68844 19.6752 7.23544 19.8952 7.81444 20.1282C11.3614 21.7682 15.5564 21.0222 18.2894 18.2902C21.8954 14.6822 21.8954 8.81324 18.2894 5.20724C16.5434 3.46124 14.2214 2.50024 11.7494 2.50024C9.27644 2.50024 6.95344 3.46224 5.20844 5.20824C2.47444 7.94024 1.73044 12.1352 3.35544 15.6482C3.58944 16.2272 3.81544 16.7912 3.81544 17.3772C3.81544 17.9622 3.61444 18.5512 3.43744 19.0712C3.29144 19.4992 3.07044 20.1452 3.21244 20.2872C3.35144 20.4312 4.00144 20.2042 4.43044 20.0572C4.94544 19.8812 5.52944 19.6792 6.10844 19.6752V19.6752ZM11.7244 22.4942C10.1964 22.4942 8.65844 22.1712 7.21944 21.5052C6.79544 21.3352 6.39844 21.1752 6.11344 21.1752C5.78544 21.1772 5.34444 21.3292 4.91844 21.4762C4.04444 21.7762 2.95644 22.1502 2.15144 21.3482C1.34944 20.5452 1.71944 19.4602 2.01744 18.5872C2.16444 18.1572 2.31544 17.7132 2.31544 17.3772C2.31544 17.1012 2.18244 16.7492 1.97844 16.2422C0.105437 12.1972 0.971437 7.32224 4.14844 4.14724C6.17644 2.11824 8.87544 1.00024 11.7484 1.00024C14.6214 1.00024 17.3214 2.11724 19.3494 4.14624C23.5414 8.33824 23.5414 15.1582 19.3494 19.3502C17.2944 21.4062 14.5274 22.4942 11.7244 22.4942V22.4942Z" fill="black"></path>
+          </g>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M15.6964 13.1628C15.1444 13.1628 14.6924 12.7158 14.6924 12.1628C14.6924 11.6098 15.1354 11.1628 15.6874 11.1628H15.6964C16.2484 11.1628 16.6964 11.6098 16.6964 12.1628C16.6964 12.7158 16.2484 13.1628 15.6964 13.1628" fill="black"></path>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M11.6876 13.1628C11.1356 13.1628 10.6836 12.7158 10.6836 12.1628C10.6836 11.6098 11.1256 11.1628 11.6786 11.1628H11.6876C12.2396 11.1628 12.6876 11.6098 12.6876 12.1628C12.6876 12.7158 12.2396 13.1628 11.6876 13.1628" fill="black"></path>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M7.67832 13.1628C7.12632 13.1628 6.67432 12.7158 6.67432 12.1628C6.67432 11.6098 7.11732 11.1628 7.66932 11.1628H7.67832C8.23032 11.1628 8.67832 12.1628C8.67832 12.7158 8.23032 13.1628 7.67832 13.1628" fill="black"></path>
+        </svg>
+        <button onclick="window.location.href='https://wa.me/+231886181331'">Message Me</button>
+      </div>
+    </div>
+
+    <!-- Skills Card -->
+    <div class="skills-card">
+      <!-- Web Development -->
+      <div class="skill-item">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+        </svg>
+        <span>Web Development</span>
+      </div>
+      <!-- Basketball -->
+      <div class="skill-item">
+        <svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 24 24">
+          <path d="M18,10H6a1,1,0,0,0,0,2H7v9a1,1,0,0,0,2,0V20h2v1a1,1,0,0,0,2,0V20h2v1a1,1,0,0,0,2,0V12h1a1,1,0,0,0,0-2Zm-7,8H9V16h2Zm0-4H9V12h2Zm4,4H13V16h2Zm0-4H13V12h2ZM20,2H4A3,3,0,0,0,1,5v8a3,3,0,0,0,3,3,1,1,0,0,0,0-2,1,1,0,0,1-1-1V5A1,1,0,0,1,4,4H20a1,1,0,0,1,1,1v8a1,1,0,0,1-1,1,1,1,0,0,0,0,2,3,3,0,0,0,3-3V5A3,3,0,0,0,20,2ZM14,8a1,1,0,0,0,0-2H10a1,1,0,0,0,0,2Z"></path>
+        </svg>
+        <span>Basketball</span>
+      </div>
+      <!-- Gaming -->
+      <div class="skill-item">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+          <title>Game</title>
+          <g id="Game">
+            <path d="M29.921,20.836l-1.5-8.987A6.978,6.978,0,0,0,21.519,6H10.481a6.978,6.978,0,0,0-6.9,5.849l-1.5,8.987a4.435,4.435,0,0,0,8.178,3.011L11.965,21h8.07l1.708,2.847a4.435,4.435,0,0,0,8.178-3.011Zm-2.517,2.3a2.435,2.435,0,0,1-3.946-.322l-2-3.332A1,1,0,0,0,20.6,19H11.4a1,1,0,0,0-.857.485l-2,3.332a2.435,2.435,0,0,1-4.49-1.653l1.5-8.986A4.985,4.985,0,0,1,10.481,8H21.519a4.985,4.985,0,0,1,4.932,4.178l1.5,8.986A2.43,2.43,0,0,1,27.4,23.139Z"></path>
+            <path d="M13,13H12V12a1,1,0,0,0-2,0v1H9a1,1,0,0,0,0,2h1v1a1,1,0,0,0,2,0V15h1a1,1,0,0,0,0-2Z"></path>
+            <circle cx="21" cy="12" r="1"></circle>
+            <circle cx="21" cy="16" r="1"></circle>
+            <circle cx="23" cy="14" r="1"></circle>
+            <circle cx="19" cy="14" r="1"></circle>
+          </g>
+        </svg>
+        <span>Gaming</span>
+      </div>
+    </div>
+
+    <!-- Projects Card -->
+    <div class="projects-card">
+      <!-- Project 1 -->
+      <div class="project-item">
+        <svg id="_1-10" data-name="1-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+          <title>Briefcase</title>
+          <g id="Briefcase">
+            <path d="M29,12a5.006,5.006,0,0,0-5-5H21V6a3,3,0,0,0-3-3H14a3,3,0,0,0-3,3V7H8a5.006,5.006,0,0,0-5,5v1.613a4.973,4.973,0,0,0,1,2.979V24a5.006,5.006,0,0,0,5,5H23a5.006,5.006,0,0,0,5-5V16.592a4.973,4.973,0,0,0,1-2.979ZM13,6a1,1,0,0,1,1-1h4a1,1,0,0,1,1,1V7H13ZM5,12A3,3,0,0,1,8,9H24a3,3,0,0,1,3,3v1.613a2.991,2.991,0,0,1-2.507,2.959l-4.614.768A2,2,0,0,0,18,16H14a2,2,0,0,0-1.879,1.34l-4.614-.768A2.991,2.991,0,0,1,5,13.613Zm13,6v2H14V18Zm5,9H9a3,3,0,0,1-3-3V18.178a5.04,5.04,0,0,0,1.179.367l4.821.8V20a2,2,0,0,0,2,2h4a2,2,0,0,0,2-2v-.653l4.821-.8A5.04,5.04,0,0,0,26,18.178V24A3,3,0,0,1,23,27Z"></path>
+          </g>
+        </svg>
+        <a href="https://geordy.netlify.app/?fbclid=Iwb21leAM8ShtjbGNrAzxKEGV4dG4DYWVtAjExAAEe3tU92_y8gsRx8DeLTy0ocCuJ3yjC22wrevtE-l7dStkVsri4P17JMNCasf4_aem_iNBT_Nbf4TCc2UHj0WFW3A" target="_blank">My portfolio</a>
+      </div>
+      <!-- Project 2 -->
+      <div class="project-item">
+        <svg id="_1-10" data-name="1-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+          <title>Briefcase</title>
+          <g id="Briefcase">
+            <path d="M29,12a5.006,5.006,0,0,0-5-5H21V6a3,3,0,0,0-3-3H14a3,3,0,0,0-3,3V7H8a5.006,5.006,0,0,0-5,5v1.613a4.973,4.973,0,0,0,1,2.979V24a5.006,5.006,0,0,0,5,5H23a5.006,5.006,0,0,0,5-5V16.592a4.973,4.973,0,0,0,1-2.979ZM13,6a1,1,0,0,1,1-1h4a1,1,0,0,1,1,1V7H13ZM5,12A3,3,0,0,1,8,9H24a3,3,0,0,1,3,3v1.613a2.991,2.991,0,0,1-2.507,2.959l-4.614.768A2,2,0,0,0,18,16H14a2,2,0,0,0-1.879,1.34l-4.614-.768A2.991,2.991,0,0,1,5,13.613Zm13,6v2H14V18Zm5,9H9a3,3,0,0,1-3-3V18.178a5.04,5.04,0,0,0,1.179.367l4.821.8V20a2,2,0,0,0,2,2h4a2,2,0,0,0,2-2v-.653l4.821-.8A5.04,5.04,0,0,0,26,18.178V24A3,3,0,0,1,23,27Z"></path>
+          </g>
+        </svg>
+        <a href="https://mylinksinbio.netlify.app/" target="_blank">My links in bio</a>
+      </div>
+    </div>
+
+    <!-- Links Section -->
+    <div class="links-card">
+      <!-- Twitter X -->
+      <div class="link-item">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/>
+        </svg>
+        <a href="https://x.com/geordy_1324?t=uwiX9keuC0Ux1JBPs0kI0w&s=09" target="_blank">Twitter X</a>
       </div>
 
-      <!-- FOOTER -->
-      <footer class="text-gray-500 text-xs text-center py-6 fade-in" style="animation-delay: 0.5s">
-        <p>© <span id="current-year">2025</span> George Toclo. All rights reserved.</p>
-      </footer>
+      <!-- Snapchat -->
+      <div class="link-item">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M24 0C10.7452 0 0 10.7452 0 24C0 37.2548 10.7452 48 24 48C37.2548 48 48 37.2548 48 24C48 10.7452 37.2548 0 24 0ZM24.245 12H24.2461C24.8152 12 25.9522 12.0797 27.1719 12.6133C27.8728 12.9202 28.503 13.3355 29.0456 13.8477C29.6925 14.459 30.2193 15.213 30.6116 16.0897C31.1839 17.3697 31.0476 19.5259 30.938 21.2583L30.9335 21.3316C30.9228 21.5028 30.9125 21.667 30.9031 21.8268C30.9775 21.8606 31.0923 21.896 31.2561 21.9043C31.564 21.8898 31.9226 21.7876 32.323 21.6008C32.51 21.5138 32.7076 21.4955 32.841 21.4955C33.037 21.4855 33.2295 21.5322 33.3983 21.6018C33.898 21.7801 34.2121 22.1442 34.2201 22.5539C34.2233 22.7233 34.1721 22.982 33.9091 23.2521C33.6889 23.4787 33.3551 23.6782 32.8881 23.8621C32.7803 23.9046 32.6509 23.9456 32.5136 23.9887C32.0392 24.1389 31.3222 24.3658 31.1355 24.8045C31.0407 25.0275 31.0811 25.3201 31.256 25.6742C31.2609 25.6837 31.2655 25.6934 31.2696 25.7032C31.3334 25.8522 32.8751 29.3585 36.2975 29.9209C36.6001 29.9703 36.8163 30.2395 36.799 30.5443C36.7942 30.6341 36.7726 30.7224 36.7357 30.8075C36.6127 31.0915 36.3296 31.3335 35.8698 31.5461C35.3065 31.8069 34.4645 32.0259 33.366 32.1978C33.3109 32.3035 33.2517 32.5729 33.2143 32.7427L33.2137 32.7456C33.1709 32.9412 33.1275 33.1344 33.0667 33.3401C32.9752 33.6525 32.7355 33.831 32.4093 33.831H32.3943L32.3799 33.8308C32.232 33.8308 32.0393 33.8074 31.7913 33.7587C31.4113 33.6848 30.9857 33.6165 30.4482 33.6165C30.1361 33.6165 29.8128 33.6439 29.4876 33.6978C28.8607 33.8018 28.3206 34.182 27.695 34.6224L27.6945 34.6228L27.693 34.6241L27.6924 34.6245C26.7778 35.2694 25.7415 36 24.1576 36C24.0891 36 24.0242 35.9981 23.9719 35.9956C23.9291 35.9986 23.8858 36 23.8426 36C22.2588 36 21.2221 35.2694 20.3063 34.6239C19.6806 34.1828 19.1399 33.8019 18.5126 33.6978C18.1872 33.6438 17.8639 33.6165 17.5519 33.6165C16.9893 33.6165 16.5385 33.7044 16.2088 33.7689L16.2012 33.7704C15.9793 33.8133 15.7874 33.8504 15.6203 33.8504C15.1742 33.8504 15.0006 33.5784 14.9337 33.3508C14.8717 33.1407 14.8281 32.9429 14.7864 32.7505L14.7841 32.7401C14.7443 32.5595 14.6879 32.3032 14.6335 32.2C13.5357 32.0284 12.6934 31.8089 12.1302 31.5481C11.6693 31.3344 11.3858 31.0922 11.2635 30.807L11.2627 30.8055C11.2268 30.7206 11.2061 30.6329 11.2009 30.5449C11.1841 30.2396 11.4 29.971 11.7024 29.9215C12.4725 29.795 13.2074 29.5089 13.8866 29.0712C14.4431 28.7126 14.9668 28.2509 15.4422 27.6984C16.2789 26.7268 16.6867 25.8056 16.7305 25.7038C16.7341 25.6952 16.738 25.687 16.742 25.6786L16.7438 25.6748C16.9188 25.3207 16.9596 25.0278 16.8647 24.8052C16.6779 24.3666 15.9618 24.1397 15.4877 23.9895L15.4862 23.989L15.4844 23.9884C15.3485 23.9454 15.2201 23.9049 15.1119 23.8624C14.6978 23.6992 14.377 23.5157 14.1586 23.3167C13.7615 22.9552 13.7599 22.5988 13.7942 22.4185C13.8464 22.1459 14.0384 21.9 14.3355 21.726C14.5717 21.5876 14.844 21.5118 15.1023 21.5118C15.263 21.5118 15.4087 21.5417 15.5363 21.601C15.9702 21.8037 16.3539 21.9066 16.6766 21.9066C16.8772 21.9066 17.0132 21.866 17.0971 21.8276C17.087 21.6571 17.076 21.4826 17.0654 21.3137L17.062 21.2599L17.0616 21.2572L17.0615 21.2565C16.9525 19.5252 16.8168 17.3712 17.3888 16.0922C17.7794 15.2186 18.3043 14.4666 18.9487 13.8566C19.4891 13.3446 20.1172 12.9294 20.8156 12.6222C22.037 12.0847 23.174 12.0046 23.7423 12.0046L24.1824 12.0003C24.2022 12 24.2229 12 24.245 12Z" fill="black"></path>
+        </svg>
+        <a href="https://www.snapchat.com/add/grgtz24?share_id=i95lL-BDU2w&locale=en-US" target="_blank">Snapchat</a>
+      </div>
 
-    </section>
-  </main>
+      <!-- Instagram -->
+      <div class="link-item">
+        <svg id="Logo" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20px" height="20px">
+          <g>
+            <path d="M256,49.5c67.3,0,75.2,0.3,101.8,1.5c24.6,1.1,37.9,5.2,46.8,8.7c11.8,4.6,20.2,10,29,18.8c8.8,8.8,14.3,17.2,18.8,29   c3.4,8.9,7.6,22.2,8.7,46.8c1.2,26.6,1.5,34.5,1.5,101.8s-0.3,75.2-1.5,101.8c-1.1,24.6-5.2,37.9-8.7,46.8   c-4.6,11.8-10,20.2-18.8,29c-8.8,8.8-17.2,14.3-29,18.8c-8.9,3.4-22.2,7.6-46.8,8.7c-26.6,1.2-34.5,1.5-101.8,1.5   s-75.2-0.3-101.8-1.5c-24.6-1.1-37.9-5.2-46.8-8.7c-11.8-4.6-20.2-10-29-18.8c-8.8-8.8-14.3-17.2-18.8-29   c-3.4-8.9-7.6-22.2-8.7-46.8c-1.2-26.6-1.5-34.5-1.5-101.8s0.3-75.2,1.5-101.8c1.1-24.6,5.2-37.9,8.7-46.8   c4.6-11.8,10-20.2,18.8-29c8.8-8.8,17.2-14.3,29-18.8c8.9-3.4,22.2-7.6,46.8-8.7C180.8,49.7,188.7,49.5,256,49.5 M256,4.1   c-68.4,0-77,0.3-103.9,1.5C125.3,6.8,107,11.1,91,17.3c-16.6,6.4-30.6,15.1-44.6,29.1c-14,14-22.6,28.1-29.1,44.6   c-6.2,16-10.5,34.3-11.7,61.2C4.4,179,4.1,187.6,4.1,256c0,68.4,0.3,77,1.5,103.9c1.2,26.8,5.5,45.1,11.7,61.2   c6.4,16.6,15.1,30.6,29.1,44.6c14,14,28.1,22.6,44.6,29.1c16,6.2,34.3,10.5,61.2,11.7c26.9,1.2,35.4,1.5,103.9,1.5   s77-0.3,103.9-1.5c26.8-1.2,45.1-5.5,61.2-11.7c16.6-6.4,30.6-15.1,44.6-29.1c14-14,28.1-22.6,29.1-44.6   c6.2-16,10.5-34.3,11.7-61.2c1.2-26.9,1.5-35.4,1.5-103.9s-0.3-77-1.5-103.9c-1.2-26.8-5.5-45.1-11.7-61.2   c-6.4-16.6-15.1-30.6-29.1-44.6c-14-14-28.1-22.6-44.6-29.1c-16-6.2-34.3-10.5-61.2-11.7C333,4.4,324.4,4.1,256,4.1L256,4.1z"></path>
+            <path d="M256,126.6c-71.4,0-129.4,57.9-129.4,129.4S184.6,385.4,256,385.4S385.4,327.4,385.4,256S327.4,126.6,256,126.6z M256,340   c-46.4,0-84-37.6-84-84s37.6-84,84-84c46.4,0,84,37.6,84,84S302.4,340,256,340z"></path>
+            <circle cx="390.5" cy="121.5" r="30.2"></circle>
+          </g>
+        </svg>
+        <a href="https://www.instagram.com/imgrgtz?igsh=MWhoc3BueXFodXlwaQ==" target="_blank">Instagram</a>
+      </div>
+
+      <!-- GitHub -->
+      <div class="link-item">
+        <svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <title>github [#142]</title>
+          <desc>Created with Sketch.</desc>
+          <defs></defs>
+          <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g id="Dribbble-Light-Preview" transform="translate(-140.000000, -7559.000000)" fill="#000000">
+              <g id="icons" transform="translate(56.000000, 160.000000)">
+                <path d="M94,7399 C99.523,7399 104,7403.59 104,7409.253 C104,7413.782 101.138,7417.624 97.167,7418.981 C96.66,7419.082 96.48,7418.762 96.48,7418.489 C96.48,7418.151 96.492,7417.047 96.492,7415.675 C96.492,7414.719 96.172,7414.095 95.813,7413.777 C98.04,7413.523 100.38,7412.656 100.38,7408.718 C100.38,7407.598 99.992,7406.684 99.35,7405.966 C99.454,7405.707 99.797,7404.664 99.252,7403.252 C99.252,7403.252 98.414,7402.977 96.505,7404.303 C95.706,7404.076 94.85,7403.962 94,7403.958 C93.15,7403.962 92.295,7404.076 91.497,7404.303 C89.586,7402.977 88.746,7403.252 88.746,7403.252 C88.203,7404.664 88.546,7405.707 88.649,7405.966 C88.01,7406.684 87.619,7407.598 87.619,7408.718 C87.619,7412.646 89.954,7413.526 92.175,7413.785 C91.889,7414.041 91.63,7414.493 91.54,7415.156 C90.97,7415.418 89.522,7415.871 88.63,7414.304 C88.63,7414.304 88.101,7413.319 87.097,7413.247 C87.097,7413.247 86.122,7413.234 87.029,7413.87 C87.029,7413.87 87.684,7414.185 88.139,7415.37 C88.139,7415.37 88.726,7417.2 91.508,7416.58 C91.513,7417.437 91.522,7418.245 91.522,7418.489 C91.522,7418.76 91.338,7419.077 90.839,7418.982 C86.865,7417.627 84,7413.783 84,7409.253 C84,7403.59 88.478,7399 94,7399" id="github-[#142]"></path>
+              </g>
+            </g>
+          </g>
+        </svg>
+        <a href="https://github.com/George123-toclo" target="_blank">GitHub</a>
+      </div>
+
+      <!-- My Website -->
+      <div class="link-item">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link-2">
+          <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
+          <line x1="8" y1="12" x2="16" y2="12"></line>
+        </svg>
+        <a href="https://mylinksinbio.netlify.app/" target="_blank">My Website</a>
+      </div>
+    </div>
+  </div>
 
   <script>
-    // Set current year in footer
-    document.getElementById('current-year').textContent = new Date().getFullYear();
+    const bioContainer = document.getElementById('bioContainer');
+    const bioToggle = document.getElementById('bioToggle');
+    const bioText = document.getElementById('bioText');
 
-    // Theme toggle functionality
-    const themeToggle = document.getElementById('theme-toggle');
-    const menuButton = document.getElementById('menu-button');
-    const menuPanel = document.getElementById('menu-panel');
-    const subjectButton = document.getElementById('subject-button');
-    const subjectDropdown = document.getElementById('subject-dropdown');
-    const subjectOptions = document.querySelectorAll('.subject-option');
-    const shareButton = document.getElementById('share-button');
-
-    function applyTheme(theme) {
-      if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.body.classList.add('dark-mode');
-        themeToggle.checked = true;
-        localStorage.setItem('theme', 'dark');
+    bioToggle.addEventListener('click', () => {
+      if (bioContainer.classList.contains('truncated')) {
+        bioContainer.classList.remove('truncated');
+        bioContainer.style.maxHeight = `${bioText.scrollHeight}px`; /* Smoothly expand to full height */
+        bioToggle.textContent = 'Show Less';
       } else {
-        document.body.classList.remove('dark-mode');
-        themeToggle.checked = false;
-        localStorage.setItem('theme', 'light');
+        bioContainer.classList.add('truncated');
+        bioContainer.style.maxHeight = '60px'; /* Collapse back to truncated height */
+        bioToggle.textContent = 'Show More';
       }
-    }
-
-    // Apply saved theme or system preference
-    applyTheme(localStorage.getItem('theme'));
-
-    themeToggle.addEventListener('change', () => {
-      applyTheme(themeToggle.checked ? 'dark' : 'light');
-    });
-
-    // Menu functionality
-    function toggleMenu() {
-      document.body.classList.toggle('menu-open');
-    }
-    
-    menuButton.addEventListener('click', toggleMenu);
-    
-    // Close menu when clicking outside
-    document.addEventListener('click', (e) => {
-      if (document.body.classList.contains('menu-open') && 
-          !menuButton.contains(e.target) && 
-          !menuPanel.contains(e.target)) {
-        toggleMenu();
-      }
-    });
-
-    // Subject dropdown functionality
-    subjectButton.addEventListener('click', (e) => {
-      e.stopPropagation();
-      subjectDropdown.classList.toggle('show');
-    });
-    
-    // Close dropdown when clicking outside
-    document.addEventListener('click', (e) => {
-      if (subjectDropdown.classList.contains('show') && 
-          !subjectButton.contains(e.target) && 
-          !subjectDropdown.contains(e.target)) {
-        subjectDropdown.classList.remove('show');
-      }
-    });
-    
-    // Select subject option
-    subjectOptions.forEach(option => {
-      option.addEventListener('click', () => {
-        // Remove selected class from all options
-        subjectOptions.forEach(opt => opt.classList.remove('selected'));
-        
-        // Add selected class to clicked option
-        option.classList.add('selected');
-        
-        // Update button text
-        subjectButton.textContent = option.dataset.subject;
-        
-        // Close dropdown
-        subjectDropdown.classList.remove('show');
-      });
-    });
-
-    // Share functionality
-    shareButton.addEventListener('click', async () => {
-      try {
-        if (navigator.share) {
-          await navigator.share({
-            title: 'George Toclo - Portfolio',
-            text: 'Check out George Toclo\'s portfolio website',
-            url: 'https://geordy.netlify.app/'
-          });
-        } else {
-          // Fallback for browsers that don't support Web Share API
-          await navigator.clipboard.writeText('https://geordy.netlify.app/');
-          alert('Link copied to clipboard!');
-        }
-      } catch (error) {
-        console.log('Error sharing:', error);
-      }
-    });
-
-    // Contact form submission with improved UX
-    const contactForm = document.getElementById('contact-form');
-    contactForm.addEventListener('submit', async function(e) {
-      e.preventDefault();
-
-      const submitButton = contactForm.querySelector('button[type="submit"]');
-      const originalButtonText = submitButton.innerHTML;
-
-      try {
-        // Show loading state
-        submitButton.disabled = true;
-        submitButton.innerHTML = '<div class="loading-spinner mr-2"></div>Sending...';
-
-        // Simulate network delay
-        await new Promise(resolve => setTimeout(resolve, 1500));
-
-        // Get form data
-        const formData = new FormData(contactForm);
-        const data = Object.fromEntries(formData);
-        const subject = subjectButton.textContent === 'Choose subject' ? 'New message' : subjectButton.textContent;
-
-        // Construct email subject and body
-        const body = `Name: ${data['first-name']} ${data['last-name']}\nEmail: ${data.email}\nSubject: ${subject}\n\nMessage:\n${data.message}`;
-
-        // Open default email client with pre-filled data
-        window.location.href = `mailto:Georgetoclo123@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-        // Reset the form
-        contactForm.reset();
-        subjectButton.textContent = 'Choose subject';
-        
-        // Remove selected class from all options
-        subjectOptions.forEach(opt => opt.classList.remove('selected'));
-      } catch (error) {
-        console.error('Error submitting form:', error);
-      } finally {
-        // Reset button state
-        submitButton.disabled = false;
-        submitButton.innerHTML = originalButtonText;
-      }
-    });
-
-    // Remove focus outline for mouse users but keep for keyboard navigation
-    document.addEventListener('mousedown', function() {
-      document.body.classList.add('using-mouse');
-    });
-
-    document.addEventListener('keydown', function() {
-      document.body.classList.remove('using-mouse');
     });
   </script>
 </body>
