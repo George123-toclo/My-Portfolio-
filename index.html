@@ -1,427 +1,316 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="light">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>My Profile</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>George | Creative Director</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
 
-  <!-- Favicon -->
-  <link rel="icon" href="IMG_20250823_190549_023.webp" type="image/webp">
+    <style>
+        body {
+            background-color: #f8fafc;
+            margin: 0;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
 
-  <!-- Google Fonts: Poppins with weight 600 (semi-bold) -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+        .section-fixed {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
 
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      font-weight: 600;
-      background: #f5f5f5;
-      color: #000;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      padding: 20px;
-      box-sizing: border-box;
-      position: relative;
-    }
+        header {
+            background: transparent;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
 
-    body::after {
-      content: '';
-      position: fixed;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      height: 100px;
-      background: linear-gradient(to top, #f5f5f5, transparent);
-      z-index: 1000;
-      pointer-events: none; /* Allows clicks to pass through the fade */
-    }
+        .text-balance { text-wrap: balance; }
 
-    .container {
-      max-width: 1200px;
-      width: 100%;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center; /* Center all content */
-    }
+        .dropdown-content {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: max-height 0.4s ease-in-out, opacity 0.3s ease-in-out, margin 0.3s ease-in-out;
+        }
 
-    .avatar {
-      width: 40vw;
-      max-width: 200px;
-      min-width: 140px;
-      aspect-ratio: 1/1;
-      border-radius: 50%;
-      object-fit: cover;
-      background: #ddd;
-      margin: 0 auto; /* Center avatar */
-    }
-
-    h1 {
-      margin: 20px 0 8px;
-      font-size: clamp(1.8rem, 5vw, 2.5rem);
-      font-weight: 600;
-      color: #000;
-    }
-
-    .bio-container {
-      position: relative;
-      max-width: 500px;
-      width: 100%;
-      margin: 0 auto;
-      overflow: hidden;
-      transition: max-height 0.5s ease-in-out; /* Smooth dropdown transition */
-    }
-
-    .bio-container.truncated {
-      max-height: 60px; /* Adjust to show ~2 lines of text */
-    }
-
-    .bio-container p {
-      margin: 0;
-      font-size: clamp(1rem, 3vw, 1.2rem);
-      font-weight: 600;
-      color: #000;
-      text-align: center;
-    }
-
-    .bio-container.truncated::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 30px;
-      background: linear-gradient(to top, #f5f5f5, transparent);
-      pointer-events: none;
-    }
-
-    .bio-toggle {
-      background: #fff;
-      color: #000;
-      border: none;
-      border-radius: 40px;
-      padding: 8px 16px;
-      font-size: clamp(0.9rem, 2.5vw, 1rem);
-      font-family: 'Poppins', sans-serif;
-      font-weight: 600;
-      cursor: pointer;
-      margin-top: 10px;
-      transition: background 0.3s ease; /* Keep background transition, remove transform */
-      -webkit-tap-highlight-color: transparent; /* Remove tap highlight */
-    }
-
-    .bio-toggle:hover {
-      background: #ddd;
-    }
-
-    .bio-toggle:focus {
-      outline: none; /* Remove blue focus outline */
-    }
-
-    .contact-card, .skills-card, .projects-card, .links-card {
-      margin: 30px auto 0; /* Center cards */
-      background: #eee;
-      border-radius: 28px;
-      padding: 15px 20px;
-      max-width: 350px;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      box-sizing: border-box;
-    }
-
-    .contact-item, .skill-item, .project-item, .link-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: clamp(0.9rem, 2.5vw, 1rem);
-      font-weight: 600;
-      color: #000;
-      transition: transform 0.3s ease;
-    }
-
-    .contact-item svg, .skill-item svg, .project-item svg, .link-item svg {
-      width: 20px;
-      height: 20px;
-      flex-shrink: 0;
-    }
-
-    .contact-item a, .project-item a, .link-item a {
-      color: #777;
-      text-decoration: none;
-      font-weight: 600;
-      transition: color 0.3s ease;
-      -webkit-tap-highlight-color: transparent; /* Remove tap highlight */
-    }
-
-    .contact-item:hover, .skill-item:hover, .project-item:hover, .link-item:hover {
-      transform: translateX(10px);
-    }
-
-    .contact-item a:hover, .project-item a:hover, .link-item a:hover {
-      color: #555;
-    }
-
-    .contact-item button {
-      background: #fff;
-      color: #000;
-      border: none;
-      border-radius: 40px;
-      padding: 8px 16px;
-      font-size: clamp(0.9rem, 2.5vw, 1rem);
-      font-family: 'Poppins', sans-serif;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.3s ease, transform 0.3s ease;
-      -webkit-tap-highlight-color: transparent; /* Remove tap highlight */
-    }
-
-    .contact-item button:hover {
-      background: #ddd;
-      transform: translateX(10px);
-    }
-
-    .contact-item button:focus {
-      outline: none; /* Remove blue focus outline */
-    }
-
-    /* Media query for larger screens */
-    @media (min-width: 768px) {
-      .avatar {
-        max-width: 250px;
-      }
-
-      h1 {
-        font-size: clamp(2rem, 4vw, 3rem);
-        font-weight: 600;
-      }
-
-      .bio-container p {
-        font-size: clamp(1.1rem, 2vw, 1.4rem);
-        max-width: 600px;
-      }
-
-      .contact-card, .skills-card, .projects-card, .links-card {
-        max-width: 500px;
-        padding: 20px 30px;
-        margin: 30px auto; /* Ensure cards are centered */
-      }
-
-      .contact-item, .skill-item, .project-item, .link-item {
-        font-size: clamp(1rem, 1.5vw, 1.2rem);
-        font-weight: 600;
-      }
-
-      .contact-item button, .bio-toggle {
-        font-size: clamp(1rem, 1.5vw, 1.2rem);
-        font-weight: 600;
-      }
-    }
-  </style>
+        .dropdown-content.open {
+            max-height: 150px;
+            opacity: 1;
+            margin-top: 0.75rem;
+        }
+    </style>
 </head>
-<body>
-  <div class="container">
-    <!-- Avatar Image -->
-    <img src="IMG-20250808-WA0006(1).jpg" alt="Profile Picture" class="avatar">
+<body class="text-slate-900 dark:bg-black dark:text-slate-100 antialiased">
 
-    <h1>George Toclo</h1>
-    <div class="bio-container truncated" id="bioContainer">
-      <p id="bioText">I'm an aspiring web developer and designer learning to build fast, accessible websites with clean, simple interfaces. Looking forward to gaining experience and working on real projects.</p>
-    </div>
-    <button class="bio-toggle" id="bioToggle">Show More</button>
+    <header class="fixed top-0 left-0 w-full z-50 transition-colors">
+        <nav class="w-full px-8 py-4 flex items-center justify-between">
+            <div class="text-sm font-bold tracking-tight text-slate-900 dark:text-white">
+                GEORGE<span class="text-slate-400 dark:text-white">.</span>
+            </div>
 
-    <!-- Contact Card -->
-    <div class="contact-card">
-      <!-- Location -->
-      <div class="contact-item">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-          <path fill="none" stroke="#000" stroke-width="2" stroke-linejoin="round" d="M25,13c0,8-9,15-9,15s-9-7-9-15c0-5,4-9,9-9S25,8,25,13z"/>
-          <circle fill="none" stroke="#000" stroke-width="2" stroke-linejoin="round" cx="16" cy="13" r="3"/>
-        </svg>
-        <span>Buchanan, Liberia</span>
-      </div>
+            <div class="flex items-center gap-4">
+                <div id="low-battery-icon" class="opacity-0 text-amber-500 transition-opacity duration-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 9v6"/><path d="M12.543 6H16a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-3.605"/><path d="M22 14v-4"/><path d="M7 12h6"/><path d="M7.606 18H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h3.606"/></svg>
+                </div>
+                <div id="charging-icon" class="opacity-0 text-green-500 transition-opacity duration-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m11 7-3 5h4l-3 5"/><path d="M14.856 6H16a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2.935"/><path d="M22 14v-4"/><path d="M5.14 18H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h2.936"/></svg>
+                </div>
+                
+                <button id="theme-toggle" class="text-slate-900 dark:text-slate-100 hover:text-slate-500 dark:hover:text-white transition-colors p-1 rounded-full focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun-moon-icon lucide-sun-moon"><path d="M12 2v2"/><path d="M14.837 16.385a6 6 0 1 1-7.223-7.222c.624-.147.97.66.715 1.248a4 4 0 0 0 5.26 5.259c.589-.255 1.396.09 1.248.715"/><path d="M16 12a4 4 0 0 0-4-4"/><path d="m19 5-1.256 1.256"/><path d="M20 12h2"/></svg>
+                </button>
+            </div>
+        </nav>
+    </header>
 
-      <!-- Email -->
-      <div class="contact-item">
-        <svg version="1.1" id="Icons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve">
-          <style type="text/css">
-            .st0{fill:none;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
-            .st1{fill:none;stroke:#000000;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:10;}
-          </style>
-          <polyline class="st0" points="11,12 21,18 31,12 "></polyline>
-          <line class="st0" x1="4" y1="12" x2="11" y2="12"></line>
-          <line class="st0" x1="1" y1="16" x2="12" y2="16"></line>
-          <line class="st0" x1="4" y1="20" x2="11" y2="20"></line>
-          <path class="st0" d="M11,12v-1c0-2.2,1.8-4,4-4h12c2.2,0,4,1.8,4,4v10c0,2.2-1.8,4-4,4H15c-2.2,0-4-1.8-4-4v-1"></path>
-        </svg>
-        <a href="mailto:GeorgeToclo123@gmail.com">georgetoclo123@gmail.com</a>
-      </div>
+    <section class="section-fixed bg-slate-100 dark:bg-black transition-colors">
+        <div class="max-w-4xl w-full px-8 grid md:grid-cols-2 gap-12 items-center">
+            <div class="relative group justify-self-center md:justify-self-start">
+                <img 
+                    src="Snapchat-2138456193.jpg" 
+                    alt="George" 
+                    class="w-48 h-64 md:w-64 md:h-80 object-cover border border-slate-300 dark:border-slate-700 grayscale dark:grayscale-0 hover:grayscale-0 transition-all duration-700 shadow-sm relative z-10"
+                >
+                <div class="absolute -bottom-4 -right-4 w-full h-full border border-slate-300 dark:border-white/20 -z-0 group-hover:translate-x-2 group-hover:translate-y-2 transition-transform"></div>
+            </div>
 
-      <!-- Phone -->
-      <div class="contact-item">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-          <path fill="none" stroke="#000" stroke-width="2" stroke-linejoin="round" d="M17.6,18.8c-0.4,0.4-0.8,1-1.1,1.5c-1.8-1.4-3.4-3.1-4.8-4.8c0.6-0.3,1.1-0.7,1.5-1.1c2-2,1.3-4.6-0.7-6.6
-            S8,5,5.9,7.1s-2.3,5.7-0.7,8c2.9,4.4,7.3,8.8,11.7,11.7c2.4,1.6,6,1.3,8-0.7s1.3-4.6-0.7-6.6S19.6,16.7,17.6,18.8z"/>
-          <path fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M27.9,13.9c0-5.5-4.4-9.9-9.9-9.9"/>
-          <path fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M23,13.7c0-2.6-2.2-4.7-4.9-4.7"/>
-        </svg>
-        <a href="tel:+231886181331">+231 886 181 331</a>
-      </div>
+            <div class="text-left">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="text-[10px] font-bold uppercase tracking-[0.4em] text-slate-400 dark:text-white">About Me</span>
+                    <span class="w-4 h-[1px] bg-slate-300 dark:bg-slate-700"></span>
+                    <div class="flex items-center gap-1.5 text-slate-500 dark:text-slate-400">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22a1 1 0 0 1-1-1v-4a1 1 0 0 1 .445-.832l3-2a1 1 0 0 1 1.11 0l3 2A1 1 0 0 1 22 17v4a1 1 0 0 1-1 1z"/><path d="M18 10a8 8 0 0 0-16 0c0 4.993 5.539 10.193 7.399 11.799a1 1 0 0 0 .601.2"/><path d="M18 22v-3"/><circle cx="10" cy="10" r="3"/></svg>
+                        <span class="text-[9px] font-bold uppercase tracking-widest">Monrovia, Liberia</span>
+                    </div>
+                </div>
+                <h1 class="text-3xl font-bold tracking-tighter mb-6 text-slate-900 dark:text-white leading-tight">
+                    Frontend developer/engineer
+                </h1>
+                <p class="text-sm text-slate-600 dark:text-slate-300 font-medium leading-relaxed">
+                    I am George Toclo, a dreamer walking through ideas, learning, growing, turning small moments into something meaningful.
+                </p>
+            </div>
+        </div>
+    </section>
 
-      <!-- Message Me Button -->
-      <div class="contact-item">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <mask id="mask0_2127_8859" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="1" y="1" width="22" height="22">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M1 1.00024H22.493V22.494H1V1.00024Z" fill="white"></path>
-          </mask>
-          <g mask="url(#mask0_2127_8859)">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M6.10844 19.6752C6.68844 19.6752 7.23544 19.8952 7.81444 20.1282C11.3614 21.7682 15.5564 21.0222 18.2894 18.2902C21.8954 14.6822 21.8954 8.81324 18.2894 5.20724C16.5434 3.46124 14.2214 2.50024 11.7494 2.50024C9.27644 2.50024 6.95344 3.46224 5.20844 5.20824C2.47444 7.94024 1.73044 12.1352 3.35544 15.6482C3.58944 16.2272 3.81544 16.7912 3.81544 17.3772C3.81544 17.9622 3.61444 18.5512 3.43744 19.0712C3.29144 19.4992 3.07044 20.1452 3.21244 20.2872C3.35144 20.4312 4.00144 20.2042 4.43044 20.0572C4.94544 19.8812 5.52944 19.6792 6.10844 19.6752V19.6752ZM11.7244 22.4942C10.1964 22.4942 8.65844 22.1712 7.21944 21.5052C6.79544 21.3352 6.39844 21.1752 6.11344 21.1752C5.78544 21.1772 5.34444 21.3292 4.91844 21.4762C4.04444 21.7762 2.95644 22.1502 2.15144 21.3482C1.34944 20.5452 1.71944 19.4602 2.01744 18.5872C2.16444 18.1572 2.31544 17.7132 2.31544 17.3772C2.31544 17.1012 2.18244 16.7492 1.97844 16.2422C0.105437 12.1972 0.971437 7.32224 4.14844 4.14724C6.17644 2.11824 8.87544 1.00024 11.7484 1.00024C14.6214 1.00024 17.3214 2.11724 19.3494 4.14624C23.5414 8.33824 23.5414 15.1582 19.3494 19.3502C17.2944 21.4062 14.5274 22.4942 11.7244 22.4942V22.4942Z" fill="black"></path>
-          </g>
-          <path fill-rule="evenodd" clip-rule="evenodd" d="M15.6964 13.1628C15.1444 13.1628 14.6924 12.7158 14.6924 12.1628C14.6924 11.6098 15.1354 11.1628 15.6874 11.1628H15.6964C16.2484 11.1628 16.6964 11.6098 16.6964 12.1628C16.6964 12.7158 16.2484 13.1628 15.6964 13.1628" fill="black"></path>
-          <path fill-rule="evenodd" clip-rule="evenodd" d="M11.6876 13.1628C11.1356 13.1628 10.6836 12.7158 10.6836 12.1628C10.6836 11.6098 11.1256 11.1628 11.6786 11.1628H11.6876C12.2396 11.1628 12.6876 11.6098 12.6876 12.1628C12.6876 12.7158 12.2396 13.1628 11.6876 13.1628" fill="black"></path>
-          <path fill-rule="evenodd" clip-rule="evenodd" d="M7.67832 13.1628C7.12632 13.1628 6.67432 12.7158 6.67432 12.1628C6.67432 11.6098 7.11732 11.1628 7.66932 11.1628H7.67832C8.23032 11.1628 8.67832 12.1628C8.67832 12.7158 8.23032 13.1628 7.67832 13.1628" fill="black"></path>
-        </svg>
-        <button onclick="window.location.href='https://wa.me/+231886181331'">Message Me</button>
-      </div>
-    </div>
+    <section class="section-fixed bg-slate-50 dark:bg-black border-t border-slate-200 dark:border-slate-800 transition-colors">
+        <div class="max-w-4xl w-full px-8">
+            <span class="text-[10px] font-bold uppercase tracking-[0.4em] text-slate-400 dark:text-slate-500 mb-12 block text-center">Featured Work</span>
+            
+            <div class="grid gap-2">
+                <div class="group cursor-pointer">
+                    <div class="flex justify-between items-end border-b border-slate-200 dark:border-slate-800 py-6 group-hover:px-4 transition-all duration-500">
+                        <div>
+                            <span class="text-[9px] font-bold text-slate-400 dark:text-white uppercase tracking-widest">Personal</span>
+                            <h3 class="text-xl font-bold tracking-tight mt-1 text-slate-900 dark:text-white">George Portfolio</h3>
+                        </div>
+                        <span class="text-[10px] font-bold text-slate-400 dark:text-slate-500">2026</span>
+                    </div>
+                </div>
+                
+                <a href="https://mylinksinbio.netlify.app/?fbclid=IwVERDUAQc4HhleHRuA2FlbQIxMABzcnRjBmFwcF9pZAwzNTA2ODU1MzE3MjgAAR55f05_exTZ5EsnxrASoHRCqQHnk-ua--se-W1lureq24sgw0pHoWlB0cn6NA_aem_Ug5b2oAIFasoYkENCj0v-A" target="_blank" class="group cursor-pointer block">
+                    <div class="flex justify-between items-end border-b border-slate-200 dark:border-slate-800 py-6 group-hover:px-4 transition-all duration-500">
+                        <div>
+                            <span class="text-[9px] font-bold text-slate-400 dark:text-white uppercase tracking-widest">Web Application</span>
+                            <h3 class="text-xl font-bold tracking-tight mt-1 text-slate-900 dark:text-white">Mylinks</h3>
+                        </div>
+                        <span class="text-[10px] font-bold text-slate-400 dark:text-slate-500">2026</span>
+                    </div>
+                </a>
 
-    <!-- Skills Card -->
-    <div class="skills-card">
-      <!-- Web Development -->
-      <div class="skill-item">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-        </svg>
-        <span>Web Development</span>
-      </div>
-      <!-- Basketball -->
-      <div class="skill-item">
-        <svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 24 24">
-          <path d="M18,10H6a1,1,0,0,0,0,2H7v9a1,1,0,0,0,2,0V20h2v1a1,1,0,0,0,2,0V20h2v1a1,1,0,0,0,2,0V12h1a1,1,0,0,0,0-2Zm-7,8H9V16h2Zm0-4H9V12h2Zm4,4H13V16h2Zm0-4H13V12h2ZM20,2H4A3,3,0,0,0,1,5v8a3,3,0,0,0,3,3,1,1,0,0,0,0-2,1,1,0,0,1-1-1V5A1,1,0,0,1,4,4H20a1,1,0,0,1,1,1v8a1,1,0,0,1-1,1,1,1,0,0,0,0,2,3,3,0,0,0,3-3V5A3,3,0,0,0,20,2ZM14,8a1,1,0,0,0,0-2H10a1,1,0,0,0,0,2Z"></path>
-        </svg>
-        <span>Basketball</span>
-      </div>
-      <!-- Gaming -->
-      <div class="skill-item">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-          <title>Game</title>
-          <g id="Game">
-            <path d="M29.921,20.836l-1.5-8.987A6.978,6.978,0,0,0,21.519,6H10.481a6.978,6.978,0,0,0-6.9,5.849l-1.5,8.987a4.435,4.435,0,0,0,8.178,3.011L11.965,21h8.07l1.708,2.847a4.435,4.435,0,0,0,8.178-3.011Zm-2.517,2.3a2.435,2.435,0,0,1-3.946-.322l-2-3.332A1,1,0,0,0,20.6,19H11.4a1,1,0,0,0-.857.485l-2,3.332a2.435,2.435,0,0,1-4.49-1.653l1.5-8.986A4.985,4.985,0,0,1,10.481,8H21.519a4.985,4.985,0,0,1,4.932,4.178l1.5,8.986A2.43,2.43,0,0,1,27.4,23.139Z"></path>
-            <path d="M13,13H12V12a1,1,0,0,0-2,0v1H9a1,1,0,0,0,0,2h1v1a1,1,0,0,0,2,0V15h1a1,1,0,0,0,0-2Z"></path>
-            <circle cx="21" cy="12" r="1"></circle>
-            <circle cx="21" cy="16" r="1"></circle>
-            <circle cx="23" cy="14" r="1"></circle>
-            <circle cx="19" cy="14" r="1"></circle>
-          </g>
-        </svg>
-        <span>Gaming</span>
-      </div>
-    </div>
+                <div class="group cursor-pointer">
+                    <div class="flex justify-between items-end border-b border-slate-200 dark:border-slate-800 py-6 group-hover:px-4 transition-all duration-500">
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <span class="text-[9px] font-bold text-slate-400 dark:text-white uppercase tracking-widest">SaaS Architecture</span>
+                                <span class="text-[8px] bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-1.5 py-0.5 rounded font-bold uppercase">Upcoming</span>
+                            </div>
+                            <h3 class="text-xl font-bold tracking-tight mt-1 text-slate-900 dark:text-white">Linkr Studio</h3>
+                        </div>
+                        <span class="text-[10px] font-bold text-slate-400 dark:text-slate-500"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <!-- Projects Card -->
-    <div class="projects-card">
-      <!-- Project 1 -->
-      <div class="project-item">
-        <svg id="_1-10" data-name="1-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-          <title>Briefcase</title>
-          <g id="Briefcase">
-            <path d="M29,12a5.006,5.006,0,0,0-5-5H21V6a3,3,0,0,0-3-3H14a3,3,0,0,0-3,3V7H8a5.006,5.006,0,0,0-5,5v1.613a4.973,4.973,0,0,0,1,2.979V24a5.006,5.006,0,0,0,5,5H23a5.006,5.006,0,0,0,5-5V16.592a4.973,4.973,0,0,0,1-2.979ZM13,6a1,1,0,0,1,1-1h4a1,1,0,0,1,1,1V7H13ZM5,12A3,3,0,0,1,8,9H24a3,3,0,0,1,3,3v1.613a2.991,2.991,0,0,1-2.507,2.959l-4.614.768A2,2,0,0,0,18,16H14a2,2,0,0,0-1.879,1.34l-4.614-.768A2.991,2.991,0,0,1,5,13.613Zm13,6v2H14V18Zm5,9H9a3,3,0,0,1-3-3V18.178a5.04,5.04,0,0,0,1.179.367l4.821.8V20a2,2,0,0,0,2,2h4a2,2,0,0,0,2-2v-.653l4.821-.8A5.04,5.04,0,0,0,26,18.178V24A3,3,0,0,1,23,27Z"></path>
-          </g>
-        </svg>
-        <a href="https://geordy.netlify.app/?fbclid=Iwb21leAM8ShtjbGNrAzxKEGV4dG4DYWVtAjExAAEe3tU92_y8gsRx8DeLTy0ocCuJ3yjC22wrevtE-l7dStkVsri4P17JMNCasf4_aem_iNBT_Nbf4TCc2UHj0WFW3A" target="_blank">My portfolio</a>
-      </div>
-      <!-- Project 2 -->
-      <div class="project-item">
-        <svg id="_1-10" data-name="1-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-          <title>Briefcase</title>
-          <g id="Briefcase">
-            <path d="M29,12a5.006,5.006,0,0,0-5-5H21V6a3,3,0,0,0-3-3H14a3,3,0,0,0-3,3V7H8a5.006,5.006,0,0,0-5,5v1.613a4.973,4.973,0,0,0,1,2.979V24a5.006,5.006,0,0,0,5,5H23a5.006,5.006,0,0,0,5-5V16.592a4.973,4.973,0,0,0,1-2.979ZM13,6a1,1,0,0,1,1-1h4a1,1,0,0,1,1,1V7H13ZM5,12A3,3,0,0,1,8,9H24a3,3,0,0,1,3,3v1.613a2.991,2.991,0,0,1-2.507,2.959l-4.614.768A2,2,0,0,0,18,16H14a2,2,0,0,0-1.879,1.34l-4.614-.768A2.991,2.991,0,0,1,5,13.613Zm13,6v2H14V18Zm5,9H9a3,3,0,0,1-3-3V18.178a5.04,5.04,0,0,0,1.179.367l4.821.8V20a2,2,0,0,0,2,2h4a2,2,0,0,0,2-2v-.653l4.821-.8A5.04,5.04,0,0,0,26,18.178V24A3,3,0,0,1,23,27Z"></path>
-          </g>
-        </svg>
-        <a href="https://mylinksinbio.netlify.app/" target="_blank">My links in bio</a>
-      </div>
-    </div>
+    <section class="section-fixed bg-slate-100 dark:bg-black border-t border-slate-200 dark:border-slate-800 transition-colors">
+        <div class="max-w-4xl w-full px-8">
+            <div class="grid md:grid-cols-2 gap-16">
+                <div>
+                    <span class="text-[10px] font-bold uppercase tracking-[0.4em] text-slate-400 dark:text-white mb-8 block">Technical Skills</span>
+                    <ul class="space-y-6">
+                        <li class="flex justify-between items-center border-b border-slate-200 dark:border-slate-800 pb-2">
+                            <span class="text-sm font-medium text-slate-700 dark:text-slate-300">Frontend Engineering</span>
+                            <span class="text-[9px] font-bold text-slate-400 dark:text-slate-500 tracking-tighter uppercase">HTML / CSS / JS</span>
+                        </li>
+                        <li class="flex justify-between items-center border-b border-slate-200 dark:border-slate-800 pb-2">
+                            <span class="text-sm font-medium text-slate-700 dark:text-slate-300">UI/UX Design</span>
+                            <span class="text-[9px] font-bold text-slate-400 dark:text-slate-500 tracking-tighter uppercase">Tailwind / Bootstrap / MD3</span>
+                        </li>
+                        <li class="flex justify-between items-center border-b border-slate-200 dark:border-slate-800 pb-2">
+                            <span class="text-sm font-medium text-slate-700 dark:text-slate-300">E-Commerce Architecture</span>
+                            <span class="text-[9px] font-bold text-slate-400 dark:text-slate-500 tracking-tighter uppercase">Manual Code Implementation</span>
+                        </li>
+                    </ul>
+                </div>
 
-    <!-- Links Section -->
-    <div class="links-card">
-      <!-- Twitter X -->
-      <div class="link-item">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-          <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/>
-        </svg>
-        <a href="https://x.com/geordy_1324?t=uwiX9keuC0Ux1JBPs0kI0w&s=09" target="_blank">Twitter X</a>
-      </div>
+                <div>
+                    <span class="text-[10px] font-bold uppercase tracking-[0.4em] text-slate-500 dark:text-slate-400 mb-8 block">Beyond the Code</span>
+                    <ul class="space-y-6">
+                        <li class="flex justify-between items-center border-b border-slate-200 dark:border-slate-800 pb-2">
+                            <div class="flex items-center gap-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-400 dark:text-white"><path d="M11.146 15.854a1.207 1.207 0 0 1 1.708 0l1.56 1.56A2 2 0 0 1 15 18.828V21a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-2.172a2 2 0 0 1 .586-1.414z"/><path d="M18.828 15a2 2 0 0 1-1.414-.586l-1.56-1.56a1.207 1.207 0 0 1 0-1.708l1.56-1.56A2 2 0 0 1 18.828 9H21a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1z"/><path d="M6.586 14.414A2 2 0 0 1 5.172 15H3a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h2.172a2 2 0 0 1 1.414.586l1.56 1.56a1.207 1.207 0 0 1 0 1.708z"/><path d="M9 3a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2.172a2 2 0 0 1-.586 1.414l-1.56 1.56a1.207 1.207 0 0 1-1.708 0l-1.56-1.56A2 2 0 0 1 9 5.172z"/></svg>
+                                <span class="text-sm font-medium text-slate-700 dark:text-slate-300 uppercase tracking-widest">Gaming</span>
+                            </div>
+                            <span class="text-[9px] font-bold text-slate-400 dark:text-slate-500 uppercase italic">Mobile Simulation</span>
+                        </li>
+                        
+                        <li class="border-b border-slate-200 dark:border-slate-800 pb-2 cursor-pointer group" onclick="toggleDropdown('music-dropdown', 'music-chevron')">
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center gap-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-400 dark:text-white"><circle cx="8" cy="18" r="4"/><path d="M12 18V2l7 4"/></svg>
+                                    <span class="text-sm font-medium text-slate-700 dark:text-slate-300 uppercase tracking-widest group-hover:text-slate-500 dark:group-hover:text-white transition-colors">Music Lover</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-[9px] font-bold text-slate-400 dark:text-slate-500 uppercase italic">Vibe Curation</span>
+                                    <svg id="music-chevron" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-400 transition-transform duration-300"><path d="m6 9 6 6 6-6"/></svg>
+                                </div>
+                            </div>
+                            <div id="music-dropdown" class="dropdown-content pl-7">
+                                <a href="https://open.spotify.com/playlist/2uL1byMVvPTy796WhvGdRm?si=Opm5diMcTYmF-elvbdg9xg&pi=Mw3cVW2cSw6fq" target="_blank" class="block text-xs font-semibold text-slate-500 dark:text-white hover:text-slate-700 dark:hover:text-slate-200 mb-2 transition-colors">Listen on Spotify ↗</a>
+                            </div>
+                        </li>
 
-      <!-- Snapchat -->
-      <div class="link-item">
-        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path fill-rule="evenodd" clip-rule="evenodd" d="M24 0C10.7452 0 0 10.7452 0 24C0 37.2548 10.7452 48 24 48C37.2548 48 48 37.2548 48 24C48 10.7452 37.2548 0 24 0ZM24.245 12H24.2461C24.8152 12 25.9522 12.0797 27.1719 12.6133C27.8728 12.9202 28.503 13.3355 29.0456 13.8477C29.6925 14.459 30.2193 15.213 30.6116 16.0897C31.1839 17.3697 31.0476 19.5259 30.938 21.2583L30.9335 21.3316C30.9228 21.5028 30.9125 21.667 30.9031 21.8268C30.9775 21.8606 31.0923 21.896 31.2561 21.9043C31.564 21.8898 31.9226 21.7876 32.323 21.6008C32.51 21.5138 32.7076 21.4955 32.841 21.4955C33.037 21.4855 33.2295 21.5322 33.3983 21.6018C33.898 21.7801 34.2121 22.1442 34.2201 22.5539C34.2233 22.7233 34.1721 22.982 33.9091 23.2521C33.6889 23.4787 33.3551 23.6782 32.8881 23.8621C32.7803 23.9046 32.6509 23.9456 32.5136 23.9887C32.0392 24.1389 31.3222 24.3658 31.1355 24.8045C31.0407 25.0275 31.0811 25.3201 31.256 25.6742C31.2609 25.6837 31.2655 25.6934 31.2696 25.7032C31.3334 25.8522 32.8751 29.3585 36.2975 29.9209C36.6001 29.9703 36.8163 30.2395 36.799 30.5443C36.7942 30.6341 36.7726 30.7224 36.7357 30.8075C36.6127 31.0915 36.3296 31.3335 35.8698 31.5461C35.3065 31.8069 34.4645 32.0259 33.366 32.1978C33.3109 32.3035 33.2517 32.5729 33.2143 32.7427L33.2137 32.7456C33.1709 32.9412 33.1275 33.1344 33.0667 33.3401C32.9752 33.6525 32.7355 33.831 32.4093 33.831H32.3943L32.3799 33.8308C32.232 33.8308 32.0393 33.8074 31.7913 33.7587C31.4113 33.6848 30.9857 33.6165 30.4482 33.6165C30.1361 33.6165 29.8128 33.6439 29.4876 33.6978C28.8607 33.8018 28.3206 34.182 27.695 34.6224L27.6945 34.6228L27.693 34.6241L27.6924 34.6245C26.7778 35.2694 25.7415 36 24.1576 36C24.0891 36 24.0242 35.9981 23.9719 35.9956C23.9291 35.9986 23.8858 36 23.8426 36C22.2588 36 21.2221 35.2694 20.3063 34.6239C19.6806 34.1828 19.1399 33.8019 18.5126 33.6978C18.1872 33.6438 17.8639 33.6165 17.5519 33.6165C16.9893 33.6165 16.5385 33.7044 16.2088 33.7689L16.2012 33.7704C15.9793 33.8133 15.7874 33.8504 15.6203 33.8504C15.1742 33.8504 15.0006 33.5784 14.9337 33.3508C14.8717 33.1407 14.8281 32.9429 14.7864 32.7505L14.7841 32.7401C14.7443 32.5595 14.6879 32.3032 14.6335 32.2C13.5357 32.0284 12.6934 31.8089 12.1302 31.5481C11.6693 31.3344 11.3858 31.0922 11.2635 30.807L11.2627 30.8055C11.2268 30.7206 11.2061 30.6329 11.2009 30.5449C11.1841 30.2396 11.4 29.971 11.7024 29.9215C12.4725 29.795 13.2074 29.5089 13.8866 29.0712C14.4431 28.7126 14.9668 28.2509 15.4422 27.6984C16.2789 26.7268 16.6867 25.8056 16.7305 25.7038C16.7341 25.6952 16.738 25.687 16.742 25.6786L16.7438 25.6748C16.9188 25.3207 16.9596 25.0278 16.8647 24.8052C16.6779 24.3666 15.9618 24.1397 15.4877 23.9895L15.4862 23.989L15.4844 23.9884C15.3485 23.9454 15.2201 23.9049 15.1119 23.8624C14.6978 23.6992 14.377 23.5157 14.1586 23.3167C13.7615 22.9552 13.7599 22.5988 13.7942 22.4185C13.8464 22.1459 14.0384 21.9 14.3355 21.726C14.5717 21.5876 14.844 21.5118 15.1023 21.5118C15.263 21.5118 15.4087 21.5417 15.5363 21.601C15.9702 21.8037 16.3539 21.9066 16.6766 21.9066C16.8772 21.9066 17.0132 21.866 17.0971 21.8276C17.087 21.6571 17.076 21.4826 17.0654 21.3137L17.062 21.2599L17.0616 21.2572L17.0615 21.2565C16.9525 19.5252 16.8168 17.3712 17.3888 16.0922C17.7794 15.2186 18.3043 14.4666 18.9487 13.8566C19.4891 13.3446 20.1172 12.9294 20.8156 12.6222C22.037 12.0847 23.174 12.0046 23.7423 12.0046L24.1824 12.0003C24.2022 12 24.2229 12 24.245 12Z" fill="black"></path>
-        </svg>
-        <a href="https://www.snapchat.com/add/grgtz24?share_id=i95lL-BDU2w&locale=en-US" target="_blank">Snapchat</a>
-      </div>
+                        <li class="flex justify-between items-center border-b border-slate-200 dark:border-slate-800 pb-2">
+                            <div class="flex items-center gap-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="text-slate-400 dark:text-white"><path d="M18,10H6a1,1,0,0,0,0,2H7v9a1,1,0,0,0,2,0V20h2v1a1,1,0,0,0,2,0V20h2v1a1,1,0,0,0,2,0V12h1a1,1,0,0,0,0-2Zm-7,8H9V16h2Zm0-4H9V12h2Zm4,4H13V16h2Zm0-4H13V12h2ZM20,2H4A3,3,0,0,0,1,5v8a3,3,0,0,0,3,3,1,1,0,0,0,0-2,1,1,0,0,1-1-1V5A1,1,0,0,1,4,4H20a1,1,0,0,1,1,1v8a1,1,0,0,1-1,1,1,1,0,0,0,0,2,3,3,0,0,0,3-3V5A3,3,0,0,0,20,2ZM14,8a1,1,0,0,0,0-2H10a1,1,0,0,0,0,2Z"></path></svg>
+                                <span class="text-sm font-medium text-slate-700 dark:text-slate-300 uppercase tracking-widest">Basketball</span>
+                            </div>
+                            <span class="text-[9px] font-bold text-slate-400 dark:text-slate-500 uppercase italic">Active Play</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
-      <!-- Instagram -->
-      <div class="link-item">
-        <svg id="Logo" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20px" height="20px">
-          <g>
-            <path d="M256,49.5c67.3,0,75.2,0.3,101.8,1.5c24.6,1.1,37.9,5.2,46.8,8.7c11.8,4.6,20.2,10,29,18.8c8.8,8.8,14.3,17.2,18.8,29   c3.4,8.9,7.6,22.2,8.7,46.8c1.2,26.6,1.5,34.5,1.5,101.8s-0.3,75.2-1.5,101.8c-1.1,24.6-5.2,37.9-8.7,46.8   c-4.6,11.8-10,20.2-18.8,29c-8.8,8.8-17.2,14.3-29,18.8c-8.9,3.4-22.2,7.6-46.8,8.7c-26.6,1.2-34.5,1.5-101.8,1.5   s-75.2-0.3-101.8-1.5c-24.6-1.1-37.9-5.2-46.8-8.7c-11.8-4.6-20.2-10-29-18.8c-8.8-8.8-14.3-17.2-18.8-29   c-3.4-8.9-7.6-22.2-8.7-46.8c-1.2-26.6-1.5-34.5-1.5-101.8s0.3-75.2,1.5-101.8c1.1-24.6,5.2-37.9,8.7-46.8   c4.6-11.8,10-20.2,18.8-29c8.8-8.8,17.2-14.3,29-18.8c8.9-3.4,22.2-7.6,46.8-8.7C180.8,49.7,188.7,49.5,256,49.5 M256,4.1   c-68.4,0-77,0.3-103.9,1.5C125.3,6.8,107,11.1,91,17.3c-16.6,6.4-30.6,15.1-44.6,29.1c-14,14-22.6,28.1-29.1,44.6   c-6.2,16-10.5,34.3-11.7,61.2C4.4,179,4.1,187.6,4.1,256c0,68.4,0.3,77,1.5,103.9c1.2,26.8,5.5,45.1,11.7,61.2   c6.4,16.6,15.1,30.6,29.1,44.6c14,14,28.1,22.6,44.6,29.1c16,6.2,34.3,10.5,61.2,11.7c26.9,1.2,35.4,1.5,103.9,1.5   s77-0.3,103.9-1.5c26.8-1.2,45.1-5.5,61.2-11.7c16.6-6.4,30.6-15.1,44.6-29.1c14-14,28.1-22.6,29.1-44.6   c6.2-16,10.5-34.3,11.7-61.2c1.2-26.9,1.5-35.4,1.5-103.9s-0.3-77-1.5-103.9c-1.2-26.8-5.5-45.1-11.7-61.2   c-6.4-16.6-15.1-30.6-29.1-44.6c-14-14-28.1-22.6-44.6-29.1c-16-6.2-34.3-10.5-61.2-11.7C333,4.4,324.4,4.1,256,4.1L256,4.1z"></path>
-            <path d="M256,126.6c-71.4,0-129.4,57.9-129.4,129.4S184.6,385.4,256,385.4S385.4,327.4,385.4,256S327.4,126.6,256,126.6z M256,340   c-46.4,0-84-37.6-84-84s37.6-84,84-84c46.4,0,84,37.6,84,84S302.4,340,256,340z"></path>
-            <circle cx="390.5" cy="121.5" r="30.2"></circle>
-          </g>
-        </svg>
-        <a href="https://www.instagram.com/imgrgtz?igsh=MWhoc3BueXFodXlwaQ==" target="_blank">Instagram</a>
-      </div>
+    <section class="section-fixed bg-slate-50 dark:bg-black border-t border-slate-200 dark:border-slate-800 transition-colors">
+        <div class="max-w-4xl w-full px-8 text-center">
+            <span class="text-[10px] font-bold uppercase tracking-[0.4em] text-slate-400 dark:text-white mb-8 block">Connect</span>
+            <h2 class="text-4xl md:text-5xl font-bold tracking-tighter text-slate-900 dark:text-white mb-12">Say hi<br/></h2>
+            
+            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+                <a href="mailto:Georgetoclo123@gmail.com" class="group text-left">
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400 group-hover:text-slate-600 dark:group-hover:text-white block mb-1 transition-colors">Email</span>
+                    <span class="text-sm font-bold border-b border-slate-300 dark:border-slate-700 pb-1 group-hover:border-slate-600 dark:group-hover:border-white transition-all">Georgetoclo123@gmail.com</span>
+                </a>
+                <a href="https://github.com/George123-toclo" target="_blank" class="group text-left">
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400 group-hover:text-slate-600 dark:group-hover:text-white block mb-1 transition-colors">GitHub</span>
+                    <span class="text-sm font-bold border-b border-slate-300 dark:border-slate-700 pb-1 group-hover:border-slate-600 dark:group-hover:border-white transition-all">@George123-toclo</span>
+                </a>
+                <a href="https://www.instagram.com/geor.dy1?igsh=MTE0dTJ0MDkyb211OQ==" target="_blank" class="group text-left">
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400 group-hover:text-slate-600 dark:group-hover:text-white block mb-1 transition-colors">Instagram</span>
+                    <span class="text-sm font-bold border-b border-slate-300 dark:border-slate-700 pb-1 group-hover:border-slate-600 dark:group-hover:border-white transition-all">@geor.dy1</span>
+                </a>
+                <a href="#" class="group text-left">
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400 group-hover:text-slate-600 dark:group-hover:text-white block mb-1 transition-colors">Discord</span>
+                    <span class="text-sm font-bold border-b border-slate-300 dark:border-slate-700 pb-1 group-hover:border-slate-600 dark:group-hover:border-white transition-all">geordy_wav</span>
+                </a>
+                <a href="https://wa.me/231886181331" target="_blank" class="group text-left">
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400 group-hover:text-slate-600 dark:group-hover:text-white block mb-1 transition-colors">WhatsApp</span>
+                    <span class="text-sm font-bold border-b border-slate-300 dark:border-slate-700 pb-1 group-hover:border-slate-600 dark:group-hover:border-white transition-all">Message me </span>
+                </a>
+            </div>
+        </div>
+    </section>
 
-      <!-- GitHub -->
-      <div class="link-item">
-        <svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-          <title>github [#142]</title>
-          <desc>Created with Sketch.</desc>
-          <defs></defs>
-          <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-            <g id="Dribbble-Light-Preview" transform="translate(-140.000000, -7559.000000)" fill="#000000">
-              <g id="icons" transform="translate(56.000000, 160.000000)">
-                <path d="M94,7399 C99.523,7399 104,7403.59 104,7409.253 C104,7413.782 101.138,7417.624 97.167,7418.981 C96.66,7419.082 96.48,7418.762 96.48,7418.489 C96.48,7418.151 96.492,7417.047 96.492,7415.675 C96.492,7414.719 96.172,7414.095 95.813,7413.777 C98.04,7413.523 100.38,7412.656 100.38,7408.718 C100.38,7407.598 99.992,7406.684 99.35,7405.966 C99.454,7405.707 99.797,7404.664 99.252,7403.252 C99.252,7403.252 98.414,7402.977 96.505,7404.303 C95.706,7404.076 94.85,7403.962 94,7403.958 C93.15,7403.962 92.295,7404.076 91.497,7404.303 C89.586,7402.977 88.746,7403.252 88.746,7403.252 C88.203,7404.664 88.546,7405.707 88.649,7405.966 C88.01,7406.684 87.619,7407.598 87.619,7408.718 C87.619,7412.646 89.954,7413.526 92.175,7413.785 C91.889,7414.041 91.63,7414.493 91.54,7415.156 C90.97,7415.418 89.522,7415.871 88.63,7414.304 C88.63,7414.304 88.101,7413.319 87.097,7413.247 C87.097,7413.247 86.122,7413.234 87.029,7413.87 C87.029,7413.87 87.684,7414.185 88.139,7415.37 C88.139,7415.37 88.726,7417.2 91.508,7416.58 C91.513,7417.437 91.522,7418.245 91.522,7418.489 C91.522,7418.76 91.338,7419.077 90.839,7418.982 C86.865,7417.627 84,7413.783 84,7409.253 C84,7403.59 88.478,7399 94,7399" id="github-[#142]"></path>
-              </g>
-            </g>
-          </g>
-        </svg>
-        <a href="https://github.com/George123-toclo" target="_blank">GitHub</a>
-      </div>
+    <footer class="relative z-50 bg-slate-100 dark:bg-black py-12 text-center text-[10px] font-bold uppercase tracking-widest text-slate-400 dark:text-slate-500 border-t border-slate-200 dark:border-slate-800 transition-colors">
+        © 2026 GEORGE. ALL RIGHTS RESERVED.
+    </footer>
 
-      <!-- My Website -->
-      <div class="link-item">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link-2">
-          <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path>
-          <line x1="8" y1="12" x2="16" y2="12"></line>
-        </svg>
-        <a href="https://mylinksinbio.netlify.app/" target="_blank">My Website</a>
-      </div>
-    </div>
-  </div>
+    <script>
+        // --- Dark Mode Logic ---
+        const themeToggleBtn = document.getElementById('theme-toggle');
 
-  <script>
-    const bioContainer = document.getElementById('bioContainer');
-    const bioToggle = document.getElementById('bioToggle');
-    const bioText = document.getElementById('bioText');
+        // Check local storage or system preference on load
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
 
-    bioToggle.addEventListener('click', () => {
-      if (bioContainer.classList.contains('truncated')) {
-        bioContainer.classList.remove('truncated');
-        bioContainer.style.maxHeight = `${bioText.scrollHeight}px`; /* Smoothly expand to full height */
-        bioToggle.textContent = 'Show Less';
-      } else {
-        bioContainer.classList.add('truncated');
-        bioContainer.style.maxHeight = '60px'; /* Collapse back to truncated height */
-        bioToggle.textContent = 'Show More';
-      }
-    });
-  </script>
+        // Toggle Theme Event Listener
+        themeToggleBtn.addEventListener('click', function() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('color-theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('color-theme', 'dark');
+            }
+        });
+
+        // --- Smooth Dropdown Logic ---
+        function toggleDropdown(dropdownId, chevronId) {
+            const dropdown = document.getElementById(dropdownId);
+            const chevron = document.getElementById(chevronId);
+            
+            if (dropdown.classList.contains('open')) {
+                dropdown.classList.remove('open');
+                chevron.style.transform = 'rotate(0deg)';
+            } else {
+                dropdown.classList.add('open');
+                chevron.style.transform = 'rotate(180deg)';
+            }
+        }
+
+        // --- Battery Logic (Preserved) ---
+        const chargingIcon = document.getElementById('charging-icon');
+        const lowBatteryIcon = document.getElementById('low-battery-icon');
+
+        function flashIcon(el, duration) {
+            el.classList.remove('opacity-0');
+            el.classList.add('opacity-100');
+            setTimeout(() => {
+                el.classList.remove('opacity-100');
+                el.classList.add('opacity-0');
+            }, duration);
+        }
+
+        if ('getBattery' in navigator) {
+            navigator.getBattery().then(battery => {
+                const checkBattery = () => {
+                    if (battery.level <= 0.1 && !battery.charging) {
+                        flashIcon(lowBatteryIcon, 3000);
+                    } else if (battery.charging) {
+                        flashIcon(chargingIcon, 5000);
+                    }
+                };
+                checkBattery();
+                battery.addEventListener('chargingchange', checkBattery);
+                battery.addEventListener('levelchange', checkBattery);
+            });
+        }
+    </script>
 </body>
 </html>
